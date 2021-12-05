@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400");
+@import url(customCursor.css);
+
+/* Colors */
+:root {
+  --clr-primary: hsl(209, 95%, 37%);
+  --clr-primary--tint: hsl(207, 66%, 91%);
+  --clr-action: hsl(166, 100%, 25%);
+  --clr-action--tint: hsla(166, 100%, 25%, 0.3);
+  --clr-warning: hsl(0, 81%, 56%);
+  --clr-accent: hsl(22, 81%, 56%);
+  --clr-text: black;
+}
+
+/* Defualt styles */
+
+/* Remove padding and margin */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.body-wrapper {
+  background: white;
+  max-width: 375px;
+  max-height: 812px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: scroll;
+  border-radius: 30px;
+
+  /* overlay */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  -webkit-box-shadow: 5px 5px 50px 5px hsl(209, 95%, 37%, 0.2); 
+  box-shadow: 5px 5px 50px 5px hsl(209, 95%, 37%, 0.2);
+}
+
+/* https://type-scale.com/ */
+body {
+  background: rgb(207, 207, 207);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #000000;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw; */
+}
+
+p {margin-bottom: 1rem;}
+
+h1, h2, h3, h4, h5 {
+  margin: 3rem 0 1.38rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2.488rem;
+}
+
+h2 {font-size: 2.074rem;}
+
+h3 {font-size: 1.728rem;}
+
+h4 {font-size: 1.44rem;}
+
+h5 {font-size: 1.2rem;}
+
+small, .text_small {font-size: 0.833rem;}
+
+/* anchors */
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+/* Common components styles */
+.btn {
+  --padding-inline: 1em;
+  --padding-block: .5em;
+  width: 100%;
+  padding-inline-end: var(--padding-inline);
+  padding-inline-start: var(--padding-inline);
+  padding-block-start: var(--padding-block);
+  padding-block-end: var(--padding-block);
+  cursor: pointer;
+}
+
+.btn-primary {
+  font-size: .75rem;
+  background-color: var(--clr-action);
+  border: 2px solid var(--clr-action);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  font-weight: 600;
+  color: white;
+}
+.btn-secoundary {
+  font-size: .75rem;
+  display: block;
+  border: 2px solid var(--clr-primary);
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--clr-primary);
+  text-align: center;
+}
+.to-front {
+  position: relative;
+  z-index: 5;
+}
+
+
