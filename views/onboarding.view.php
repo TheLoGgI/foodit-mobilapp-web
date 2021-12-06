@@ -2,32 +2,58 @@
         <header class="login-header">
             <img src="./icons/logo.svg" width="250" height="100" alt="foodit trademark">
         </header>
-        <form class="login-form" action="" method="post">
-            <div class="input-field">
-                <label for="loginemail">Email</label>
-                <input type="email" name="loginemail" id="loginemail" autocomplete="email">
-            </div>
-            <div class="input-field">
-                <label for="loginpassword">Kodeord</label>
-                <input type="password" name="loginpassword" id="loginpassword" autocomplete="current-password">
-            </div>
-            <div class="input-field">
-                <label for="loginpassword">Kodeord</label>
-                <input type="password" name="loginpassword" id="loginpassword" autocomplete="current-password">
-            </div>
-            <div class="input-field">
-                <label for="loginpassword">Kodeord</label>
-                <input type="password" name="loginpassword" id="loginpassword" autocomplete="current-password">
-            </div>
-            <div class="input-field">
-                <label for="loginpassword">Kodeord</label>
-                <input type="password" name="loginpassword" id="loginpassword" autocomplete="current-password">
-            </div>
+<div class="onboarding-figure">
 
-        <input class="btn btn-primary" type="submit" value="Login">
+      <img src="../images/onboarding_1.png" class="onboarding-image" id="onboardingImage1"alt="">
+      <img src="" alt="" id="onboardingImage2">
+</div>
 
-        <a class="btn btn-secoundary to-front" type="button" href="/">Opret bruger</a>
+<div class="onboarding-text">
+    <p id="onboardingTextP">
+        Velkommen til FoodIt.
+FoodIt gør det nemt for dig at købe og sælge vare, som har brug for at blive reddet fra skraldespanden
+For at bruge appen skal du oprette en bruger på appen
+    </p>
+<div class="onboarding-buttons" id="onboardingButtons">
+<button class="btn btn-secoundary" id="onboardBackward" >
+Tilbage
+</button>
 
-        </form>
-        <img class="bg-figure" src="./images/grocery-bag.jpg" width="600" height="800" alt="indkøbs taske">
+<button class="btn btn-primary" id="onboardForward">
+videre
+</button>
+<button class="btn btn-primary" id="onboardEnd">
+Afslut
+</button>
+
+
+</div>
+
+<div class="progress">
+<div class="progress-number">
+        <p id="progressNumberP">1/6</p>
+    </div>
+    <div class="progress-bar">
+    <div class="outer-progress">
+
+    </div>
+    <div class="inner-progress" id="innerProgress">
+
+    </div>
+    <div class="circle-progress"></div>
+
+
+
+</div>
+
+
+
+    
+
+    </div>
+
+
+</div>
+
+
 </section>
