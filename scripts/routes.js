@@ -1,5 +1,6 @@
 const Home = document.getElementById('login')
 const Register = document.getElementById('register')
+const Onboarding = document.getElementById('onboarding')
 
 
 
@@ -13,6 +14,11 @@ const routes = [
         path: '/register',
         title: 'register',
         component: Register,
+    },
+    {
+        path: '/onboarding',
+        title: 'onboarding',
+        component: Onboarding,
     },
 ]
 
