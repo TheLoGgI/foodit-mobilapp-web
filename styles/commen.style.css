@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400");
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,600,800");
 
 /* Colors */
 :root {
@@ -120,6 +120,45 @@ a {
 .to-front {
   position: relative;
   z-index: 5;
+}
+
+/* Modal popdown */
+.modal {
+  background-color: #0561b8;
+  padding: .85rem 1rem;
+  position: absolute;
+  z-index: 100;
+  color: white;
+  width: 100%;
+  /* border-radius: 0px 0px 4px 4px; */
+  transform: translateY(-100%);
+  transition: all ease-in-out;
+}
+
+.modal p {
+  margin: 0;
+}
+
+.modal-error {
+  background-color: #b80514;
+}
+
+/* Menu popup */
+.menu {
+  background-color: #0561b8;
+  padding: .85rem 1rem;
+  position: absolute;
+  z-index: 100;
+  color: white;
+  width: 100%;
+
+  /* border-radius: 0px 0px 4px 4px; */
+  /* transform: translateY(-100%);
+  transition: all ease-in-out; */
+}
+
+.menu-header {
+  display: flex;
 }
 
 
