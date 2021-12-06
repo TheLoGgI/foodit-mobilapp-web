@@ -40,7 +40,7 @@ class Navigate  {
     }
 
     /** Changes the defualt behavoir of the links to use the SPA 
-    * @param {function} cb - callback function
+    * @param {() => void} cb - callback function
     * @return {void}
     **/
     useSPA(cb) {
@@ -63,7 +63,7 @@ class Navigate  {
     }
 
     /**  Gets all hrefs from anchor tags in the document and creates a route object for each
-    * @param {String[] } links - Array of HTMLAnchorElement
+    * @param {HTMLAnchorElement[] } links - Array of HTMLAnchorElement
     * @param {() => void } cb - *Optional* callback function
     * @example - this.fetchRoutes(this.#links, callback);
     * @return {Array} {path: string, title: string} - Array of objects with the path and the title
@@ -140,8 +140,6 @@ class Navigate  {
         let currentView
         views.forEach((curr) => {
             console.log('curr: ', curr);
-            // if (!curr.component.nodeType) return  /* If component is not a node */
-            // console.log('curr.path === this.currentRoute || curr.title === this.currentRoute: ', curr.path === this.currentRoute || curr.title === this.currentRoute);
             if (curr.path === this.currentRoute || curr.title === this.currentRoute) {
                 curr.component.style.display = 'block';
                 currentView = curr.component;
