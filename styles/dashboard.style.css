@@ -115,6 +115,10 @@
   left: 10px;
 }
 
+.bgc-fill {
+  max-width: 100%;
+}
+
 /* Style fill ends */
 
 /* Recipes styling starts */
