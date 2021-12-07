@@ -4,24 +4,20 @@
         </header>
         <form class="login-form" action="" method="post">
             <div class="input-field">
-                <label for="loginemail">Email</label>
-                <input type="email" name="loginemail" id="loginemail" autocomplete="email">
+                <label for="companyname">Navn / Firmanavn</label>
+                <input type="email" name="companyname" id="companyname" autocomplete="name">
             </div>
             <div class="input-field">
-                <label for="loginpassword">Kodeord</label>
-                <input type="password" name="loginpassword" id="loginpassword" autocomplete="current-password">
+                <label for="registeremail">Email</label>
+                <input type="email" name="registeremail" id="registeremail" autocomplete="email">
             </div>
             <div class="input-field">
-                <label for="loginpassword">Kodeord</label>
-                <input type="password" name="loginpassword" id="loginpassword" autocomplete="current-password">
+                <label for="registerpassword">Kodeord</label>
+                <input type="password" name="registerpassword" id="registerpassword" autocomplete="new-password">
             </div>
             <div class="input-field">
-                <label for="loginpassword">Kodeord</label>
-                <input type="password" name="loginpassword" id="loginpassword" autocomplete="current-password">
-            </div>
-            <div class="input-field">
-                <label for="loginpassword">Kodeord</label>
-                <input type="password" name="loginpassword" id="loginpassword" autocomplete="current-password">
+                <label for="reregisterpassword">Gentag kodeord</label>
+                <input type="password" name="reregisterpassword" id="reregisterpassword" autocomplete="new-password">
             </div>
 
         <input class="btn btn-primary" type="submit" value="Login">

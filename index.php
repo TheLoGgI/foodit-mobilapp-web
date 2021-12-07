@@ -8,11 +8,13 @@
     <title>Login Page</title>
     <link href="styles/login.style.css" rel="stylesheet"/>
     <link href="styles/onboarding.style.css" rel="stylesheet"/>
+    <link href="styles/main.style.css" rel="stylesheet"/>
 </head>
 <body>
     <div class="modal modal-error" data-background-color="#0561b8">
         <p id="modalText" class="modal-content">Forkert kodeord</p>
     </div>
+    <div class="backdrop" id="backdrop"></div>
     <!-- <div class="shadow-decoration"></div> -->
     <main class="body-wrapper">
         <section data-route id="login" class="login-container">
@@ -42,28 +44,8 @@
 
         <?php include "./components/navigation.component.php" ?>
     </main>
-
-    <div class="menu" data-background-color="#0561b8">
-        <header class="menu-header">
-            <img src="./images/jake-nackos-resized-squere.jpg" width="200" height="200" alt="Profil af Camille">
-            <div class="menu-content">
-                <p class="menu-name">Camille Henriksen</p>
-                <p class="menu-address">8900, Randers</p>
-                
-                <a href="/profil" class="menu-profil">Se min profil</a>
-            </div>
-        </header>
-
-        <div class="menu-content">
-            <a href="#">Mine tidliger køb</a>
-            <a href="#">Indstillinger</a>
-            <a href="#">Favoritter</a>
-            <a href="#">Sælg vare</a>
-            
-            <button>Logud</button>
-        </div>
-
-    </div>
+ 
+    <?php include "./components/menu.component.php" ?>
 
 
     <script src="scripts/main.js" type="module"></script>

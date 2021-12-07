@@ -1,49 +1,46 @@
-@import url(commen.style.css);
-
 .login-header {
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .login-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
 }
 
-.login-form input:not([type="submit"])  {
-    background-color: #F4F4F4;
-    padding: .5em .6em;
+.login-form input:not([type="submit"]) {
+  background-color: #f4f4f4;
+  padding: 0.5em 0.6em;
 }
 
 .login-container {
-    font-size: .75rem;
-    max-width: 300px;
-    margin: 0 auto;
-    /* background-color: white; */
-    padding: 2rem;
+  font-size: 0.75rem;
+  max-width: 300px;
+  margin: 0 auto;
+  /* background-color: white; */
+  padding: 2rem;
 }
 
 .input-field {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-field label {
-    color: var(--clr-primary);
+  color: var(--clr-primary);
 }
 
 .bg-figure {
-    width: 100%;
-    height: 60%;
-    object-fit: contain;
-    position: relative;
-    z-index: 0;
-    transform: scale(1.6) translateY(7%);
-    bottom: 0;
-    left: 0;
-    right: 0;
+  width: 100%;
+  height: 60%;
+  object-fit: contain;
+  position: relative;
+  z-index: 0;
+  transform: scale(1.6) translateY(7%);
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
-

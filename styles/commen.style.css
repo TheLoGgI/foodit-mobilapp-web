@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,600,800");
+@import url(menu.style.css);
+@import url(modal.style.css);
 
 /* Colors */
 :root {
@@ -24,7 +26,6 @@
 .body-wrapper {
   background: white;
   max-width: 450px;
-  max-height: auto;
   width: 100%;
   height: 100%;
   position: relative;
@@ -40,15 +41,14 @@
   box-shadow: 5px 5px 50px 5px hsl(209, 95%, 37%, 0.2); */
 }
 
-
-
 /* https://type-scale.com/ */
 body {
   background: rgb(207, 207, 207);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   line-height: 1.75;
   color: #000000;
+  position: relative;
   /* display: flex;
   align-items: center;
   justify-content: center;
@@ -56,11 +56,13 @@ body {
   width: 100vw; */
 }
 
-p {margin-bottom: 1rem;}
-
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 3rem 0 1.38rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   line-height: 1.3;
 }
@@ -70,15 +72,26 @@ h1 {
   font-size: 2.488rem;
 }
 
-h2 {font-size: 2.074rem;}
+h2 {
+  font-size: 2.074rem;
+}
 
-h3 {font-size: 1.728rem;}
+h3 {
+  font-size: 1.728rem;
+}
 
-h4 {font-size: 1.44rem;}
+h4 {
+  font-size: 1.44rem;
+}
 
-h5 {font-size: 1.2rem;}
+h5 {
+  font-size: 1.2rem;
+}
 
-small, .text_small {font-size: 0.833rem;}
+small,
+.text_small {
+  font-size: 0.833rem;
+}
 
 /* anchors */
 a {
@@ -89,7 +102,7 @@ a {
 /* Common components styles */
 .btn {
   --padding-inline: 1em;
-  --padding-block: .5em;
+  --padding-block: 0.5em;
   width: 100%;
   padding-inline-end: var(--padding-inline);
   padding-inline-start: var(--padding-inline);
@@ -99,16 +112,17 @@ a {
 }
 
 .btn-primary {
-  font-size: .75rem;
+  font-size: 0.75rem;
   background-color: var(--clr-action);
   border: 2px solid var(--clr-action);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06),
+    0px 0px 1px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   font-weight: 600;
   color: white;
 }
 .btn-secoundary {
-  font-size: .75rem;
+  font-size: 0.75rem;
   display: block;
   border: 2px solid var(--clr-primary);
   box-sizing: border-box;
@@ -121,44 +135,3 @@ a {
   position: relative;
   z-index: 5;
 }
-
-/* Modal popdown */
-.modal {
-  background-color: #0561b8;
-  padding: .85rem 1rem;
-  position: absolute;
-  z-index: 100;
-  color: white;
-  width: 100%;
-  /* border-radius: 0px 0px 4px 4px; */
-  transform: translateY(-100%);
-  transition: all ease-in-out;
-}
-
-.modal p {
-  margin: 0;
-}
-
-.modal-error {
-  background-color: #b80514;
-}
-
-/* Menu popup */
-.menu {
-  background-color: #0561b8;
-  padding: .85rem 1rem;
-  position: absolute;
-  z-index: 100;
-  color: white;
-  width: 100%;
-
-  /* border-radius: 0px 0px 4px 4px; */
-  /* transform: translateY(-100%);
-  transition: all ease-in-out; */
-}
-
-.menu-header {
-  display: flex;
-}
-
-

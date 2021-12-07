@@ -1,11 +1,11 @@
 <nav class="navigation-menu">
     <div class="nav-item">
-        <a href="/">
+        <a href="/dashboard">
             <img src="../icons/home.svg" width="30" heigh="40" alt=""> Hjem
         </a>
     </div>
     <div class="nav-item">
-        <a href="#">
+        <a href="/recipes">
             <img src="../icons/recipies.svg" width="30" heigh="40" alt=""> Opskrifter
         </a>
     </div>
@@ -15,9 +15,11 @@
         </a>
     </div>
     <div class="nav-item">
-        <a href="#">
-            <img src="../icons/menu.svg" width="30" heigh="40" alt=""> Menu
-        </a>
+        <button class="nav-menu-button" id="navigationMenuButton">
+            <img src="../icons/menu.svg" width="30" heigh="40" alt=""> 
+            <p>Menu</p>
+        </button>
+        
     </div>
 </nav>
 
@@ -46,11 +48,45 @@
         right: 0;
     }
 
-    .nav-item a {
+    .nav-item a, .nav-item {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         row-gap: .5rem;
     }
+
+    .nav-menu-button {
+        font-size: 1rem;
+        border: none;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        row-gap: .5rem;
+        margin: 0;
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
 </style>
+
+<script>
+    const menuBtn = document.getElementById('navigationMenuButton')
+    const backdrop = document.getElementById('backdrop')
+
+    menuBtn.addEventListener('click', (e) => {
+        const menu = document.getElementById('navigationMenu')
+        menu.classList.toggle('menu-open')
+        backdrop.classList.toggle('backdrop-active')
+    })
+    
+    backdrop.addEventListener('click', (e) => {
+        const menu = document.getElementById('navigationMenu')
+        menu.classList.toggle('menu-open')
+        backdrop.classList.toggle('backdrop-active')
+    })
+
+
+
+
+</script>
