@@ -9,6 +9,10 @@
     <link href="styles/main.style.css" rel="stylesheet"/>
 </head>
 <body>
+    <div class="modal modal-error" data-background-color="#0561b8">
+        <p id="modalText" class="modal-content">Forkert kodeord</p>
+    </div>
+    <div class="backdrop" id="backdrop"></div>
     <!-- <div class="shadow-decoration"></div> -->
     <main class="body-wrapper">
         <section data-route id="login" class="login-container">
@@ -38,6 +42,8 @@
 
         <?php include "./components/navigation.component.php" ?>
     </main>
+ 
+    <?php include "./components/menu.component.php" ?>
 
 
     <script src="scripts/main.js" type="module"></script>

@@ -1,0 +1,21 @@
+/* Modal popdown */
+.modal {
+    background-color: #0561b8;
+    padding: .85rem 1rem;
+    position: absolute;
+    z-index: 100;
+    color: white;
+    width: 100%;
+    /* border-radius: 0px 0px 4px 4px; */
+    transform: translateY(-100%);
+    transition: transform 300ms ease-in-out 1s;
+  }
+  
+  .modal p {
+    margin: 0;
+  }
+  
+  .modal-error {
+    background-color: #b80514;
+  }
+  
