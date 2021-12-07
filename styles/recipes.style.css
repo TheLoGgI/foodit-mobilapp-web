@@ -18,14 +18,14 @@
 }
 
 .search-input {
-  width: 280px;
+  width: 60%;
   height: 30px;
   background: #eceaea;
   border-radius: 4px;
 }
 
 .search-button {
-  width: 50px;
+  width: 15%;
   height: 30px;
   background: #006149;
   border-radius: 4px;
@@ -37,8 +37,8 @@
 }
 
 .filter-button {
-  width: 43px;
-  height: 33px;
+  width: 15%;
+  height: 30px;
   background: #006149;
   border-radius: 4px;
 }
@@ -60,7 +60,7 @@
 }
 
 .recipe-h3 {
-  font-size: 24px;
+  font-size: 20px;
   margin: 0;
   font-weight: 600;
   color: var(--clr-action);
@@ -112,7 +112,7 @@
 }
 
 .recipes-title {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   margin: 10px 5px;
   z-index: 5;
@@ -127,8 +127,8 @@
 }
 
 .star {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
 }
 
 .recipes-information {
