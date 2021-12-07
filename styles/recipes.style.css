@@ -1,0 +1,138 @@
+/* General styling */
+
+.recipes-contaier {
+  font-size: 0.75rem;
+  max-width: 300px;
+  margin: 0 auto;
+  /* background-color: white; */
+  padding: 2rem;
+}
+
+/* Search and filter bar */
+
+.search-recipe {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: 10px 10px;
+}
+
+.search-input {
+  width: 280px;
+  height: 30px;
+  background: #eceaea;
+  border-radius: 4px;
+}
+
+.search-button {
+  width: 50px;
+  height: 30px;
+  background: #006149;
+  border-radius: 4px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+}
+
+.filter-button {
+  width: 43px;
+  height: 33px;
+  background: #006149;
+  border-radius: 4px;
+}
+
+/* Style recipe start */
+
+.recipe-container {
+  margin-bottom: 50px;
+  z-index: 5;
+}
+
+.category-recipe {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  padding: 20px 15px 0px 15px;
+  z-index: 5;
+}
+
+.recipe-h3 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+  color: var(--clr-action);
+  z-index: 5;
+}
+
+.recipe-flex {
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 5;
+}
+
+.recipes-odd {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  margin: 20px 10px;
+  z-index: 5;
+  background-color: #fff;
+  max-width: 100%;
+  resize: vertical;
+}
+
+/* On mouse-over, add a deeper shadow */
+.recipes-odd:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.recipes-even {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  margin: 20px 10px;
+  z-index: 5;
+  background-color: #fff;
+  max-width: 45%;
+  resize: vertical;
+}
+
+/* On mouse-over, add a deeper shadow */
+.recipes-even:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.recipes-image {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+.recipes-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px 5px;
+  z-index: 5;
+}
+
+.recipe-stars {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.star {
+  width: 25px;
+  height: 25px;
+}
+
+.recipes-information {
+  margin: 10px 5px;
+  margin-top: 0;
+  z-index: 5;
+}

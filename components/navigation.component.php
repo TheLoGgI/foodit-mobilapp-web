@@ -1,11 +1,11 @@
 <nav class="navigation-menu">
     <div class="nav-item">
-        <a href="/">
+        <a href="/dashboard">
             <img src="../icons/home.svg" width="30" heigh="40" alt=""> Hjem
         </a>
     </div>
     <div class="nav-item">
-        <a href="#">
+        <a href="/recipes">
             <img src="../icons/recipies.svg" width="30" heigh="40" alt=""> Opskrifter
         </a>
     </div>
