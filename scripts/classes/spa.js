@@ -93,7 +93,6 @@ class Navigate  {
     */
     navigateTo(path) {
         let route = this.getRoutes.find(route => route.path === path);
-        console.log('route: ', route);
         if (route) {
             window.history.pushState("", document.title, location.origin + route.path);
             document.title = route.title;
@@ -139,12 +138,10 @@ class Navigate  {
 
         let currentView
         views.forEach((curr) => {
-            console.log('curr: ', curr);
             if (curr.path === this.currentRoute || curr.title === this.currentRoute) {
                 curr.component.style.display = 'block';
                 currentView = curr.component;
             } else {
-                console.log('curr: ', curr);
                 curr.component.style.display = 'none';
             }
         }, null);
