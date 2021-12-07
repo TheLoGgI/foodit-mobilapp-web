@@ -6,6 +6,8 @@
     <meta name="author" content="" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
     <title>Login Page</title>
+    <link href="styles/login.style.css" rel="stylesheet"/>
+    <link href="styles/onboarding.style.css" rel="stylesheet"/>
     <link href="styles/main.style.css" rel="stylesheet"/>
 </head>
 <body>

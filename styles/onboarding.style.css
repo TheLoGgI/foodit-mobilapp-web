@@ -1,0 +1,68 @@
+.onboarding-figure {
+  width: 160px;
+  margin: auto;
+}
+.onboarding-image {
+  width: 160px;
+  margin: auto;
+}
+.onboarding-text {
+  margin: auto;
+  padding: 30px;
+  max-width: 350px;
+  text-align: center;
+  background: #ffffff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
+    0px 0px 1px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+}
+
+.onboarding-buttons button {
+  width: 48%;
+}
+
+.onboarding-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.outer-progress {
+  margin-bottom: -4px;
+  height: 2px;
+  width: 100%;
+  background: hsl(166, 100%, 25%);
+}
+
+.inner-progress {
+  height: 6px;
+  width: 16.6%;
+  background: hsl(166, 100%, 25%);
+}
+
+.circle-progress {
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background: hsl(166, 100%, 25%);
+  margin-left: auto;
+  margin-top: -9px;
+}
+
+.progress {
+  margin-top: 8px;
+}
+
+.progress-number p {
+  margin-bottom: 4px;
+}
+
+#onboardBackward {
+  display: none;
+}
+
+#onboardEnd {
+  display: none;
+}
+#onboardingButtons {
+  justify-content: center;
+}
