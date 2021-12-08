@@ -1,5 +1,5 @@
 <section data-route id="dashboard" class="dashboard-container">
-      
+
     <article class="goods-container">
 
     <div class="category-dashboard">
@@ -8,7 +8,7 @@
     </div>
 
 
-    <div class="goods-scroll">
+    <div class="goods-scroll" id="dashboardProducts">
         <div class="goods">
             <div class="goods-image">
                 <img class="gd-image" src="../images/banan.png" alt="">
@@ -213,3 +213,53 @@
 </article>
 
 </section>
+
+<script>
+    async function fetchProducts() {
+
+            const options = {
+                method: 'get',
+                requestUrl: 'http://localhost:3000/api',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+            }
+            const response = await fetch(options.requestUrl, options)
+            
+            // console.log('response: ', response);
+            if (response.ok) {
+                const requestData = await response.json()
+                // console.log('requestData: ', requestData);
+                constructElements(requestData.data)
+            } else {
+                console.warn('fetch din\'t complete as intended')
+            }
+        }
+
+    function constructElements(productsArray) {
+
+        const container = document.getElementById('dashboardProducts')
+
+        const htmlString = productsArray.reduce((acc, curr) => {
+            const {billede: image, pris: price, titel, address, postalCode, city} = curr
+            return acc += `
+                <div class="goods">
+                    <div class="goods-image">
+                        <img class="gd-image" src="${image}" alt="">
+                        <div class="price-tag"><h5 class="price">${price} kr.</h5></div>
+                    </div>
+                <h4 class="goods-title">${titel}</h4>
+                <p class="seller-information">
+                    ${address} <br>
+                    ${postalCode} ${city}
+                </p>
+                </div>`
+        }, '')
+
+        container.innerHTML = htmlString
+
+    }
+
+        fetchProducts()
+</script>
