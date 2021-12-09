@@ -4,7 +4,7 @@ session_start();
 
 
 if(isset($_POST['submit'])) {
-    include('../DBH.php');
+    include('../../classes/DBH.php');
 
     if(empty($_POST['userName'])){
         header('Location:../../../views/register?error=emptyName');
@@ -36,7 +36,6 @@ if(isset($_POST['submit'])) {
         };
     
     /*    
-  
 
     */
         $userName = mysqli_real_escape_string($dbh, strip_tags($_POST['userName'])); 
