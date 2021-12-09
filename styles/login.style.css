@@ -44,3 +44,7 @@
   left: 0;
   right: 0;
 }
+
+#register .login-form .btn-primary {
+  margin-bottom: 50px;
+}

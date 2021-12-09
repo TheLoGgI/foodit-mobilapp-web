@@ -29,6 +29,7 @@
 
         <input class="btn btn-primary" type="submit" name="submit" value="Opret bruger">
 
+
         </form>
         <img class="bg-figure" src="./images/grocery-bag.jpg" width="600" height="800" alt="indkøbs taske">
 </section>
