@@ -4,7 +4,7 @@ session_start();
 
 
 if(isset($_POST['submit'])) {
-    include('../../classes/DBH.php');
+    include('../mysql.php');
 
     if(empty($_POST['userName'])){
         header('Location:../../../views/register?error=emptyName');
@@ -38,13 +38,13 @@ if(isset($_POST['submit'])) {
     /*    
 
     */
-        $userName = mysqli_real_escape_string($dbh, strip_tags($_POST['userName'])); 
-        $userEmail = mysqli_real_escape_string($dbh, strip_tags($_POST['registerEmail']));
-        $userPassword = password_hash(mysqli_real_escape_string($dbh,$_POST['registerPassword']), PASSWORD_DEFAULT);
+        $userName = mysqli_real_escape_string($mySQL, strip_tags($_POST['userName'])); 
+        $userEmail = mysqli_real_escape_string($mySQL, strip_tags($_POST['registerEmail']));
+        $userPassword = password_hash(mysqli_real_escape_string($mySQL,$_POST['registerPassword']), PASSWORD_DEFAULT);
         
         $sql = "INSERT INTO bruger(navn, email, kodeord) VALUES('$userName', '$userEmail', '$userPassword')";
         
-        $inserted = mysqli_query($dbh, $sql);
+        $inserted = mysqli_query($mySQL, $sql);
 
         if($inserted){
             $_SESSION['user_name'] = $userName;

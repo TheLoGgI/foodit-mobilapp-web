@@ -3,7 +3,7 @@ session_start();
 
 
 if(isset($_POST['submit'])) {
-    include('../DBH.php');
+    include('../mysql.php');
 
 
     if(empty($_POST['loginEmail'])){
@@ -24,12 +24,12 @@ if(isset($_POST['submit'])) {
             exit;
         }
 
-        $userEmail = mysqli_real_escape_string($dbh,strip_tags($_POST['loginEmail']));
-        $userPassword = mysqli_real_escape_string($dbh ,$_POST['loginPassword']);
+        $userEmail = mysqli_real_escape_string($mySQL,strip_tags($_POST['loginEmail']));
+        $userPassword = mysqli_real_escape_string($mySQL ,$_POST['loginPassword']);
 
         $sql = "SELECT * FROM `bruger` WHERE email='$userEmail'";
         // AND password='$userPassword'
-        $userFound = mysqli_query($dbh,$sql);
+        $userFound = mysqli_query($mySQL,$sql);
 
         if($userFound){
 

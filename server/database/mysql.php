@@ -1,10 +1,9 @@
 <?php
 
-        include '../database/creditials.php';
+        include('creditials.php');
         
         try {
-            $dbh = new mysqli($host, $username, $password, $database);
-            return $dbh;
+            $mySQL = new mysqli($host, $username, $password, $database);
         } catch (Exception $e) {
             print "Error: " . $e->getMessage() . "<br>";
             die();

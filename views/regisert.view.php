@@ -1,6 +1,5 @@
 <?php
-/*
-include('../server/database/DBH.php'); */
+/*  include('../server/database/DBH.php'); */
 ?>
 
 
