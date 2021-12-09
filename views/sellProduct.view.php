@@ -7,31 +7,31 @@
                         <div class="">Tilføj billede</div>
                         <img id="userprofilimage" src="./images/default-food-image.jpg" alt="food" width="200" height="200">
                     </label>
-                <input class="sell-filupload hidden" name="fileToUpload" type="file" id="foodUpload">
+                <input class="sell-filupload hidden" name="fileToUpload" type="file" id="foodUpload" required>
             </div>
             <div class="form-field">
                 <label for="producttitle">Title på vare</label>
-                <input type="text" name="producttitle" id="producttitle">
+                <input type="text" name="producttitle" id="producttitle" required>
             </div>
             <div class="form-field">
                 <label for="productprice">Pris på vare</label>
-                <input type="number" name="productprice" id="productprice">
+                <input type="number" name="productprice" id="productprice" required>
             </div>
             <div class="form-field">
                 <label for="productdescription">Beskrivelse af varen</label>
-                <textarea class="" rows="5" cols="33" type="text" name="productdescription" id="productdescription"></textarea>
+                <textarea class="" rows="5" cols="33" type="text" name="productdescription" id="productdescription" required></textarea>
             </div>
             <div class="form-field">
                 <label for="bedstbeforedate">Bedst før dato</label>
-                <input type="date" name="bedstbeforedate" id="bedstbeforedate">
+                <input type="date" name="bedstbeforedate" id="bedstbeforedate" required>
             </div>
             <div class="form-field">
                 <label for="pickupday">Dag for afhenting</label>
-                <input type="date" name="pickupdate" id="pickupdate">
+                <input type="date" name="pickupdate" id="pickupdate" required>
             </div>
             <div class="form-field">
                 <label for="pickuptime">Tidsrum for afhenting</label>
-                <input type="time" name="pickuptime" id="pickuptime">
+                <input type="text" name="pickuptime" id="pickuptime" required>
             </div>
             <div class="form-field">
             <label for="allergens">Allergener</label>
@@ -69,7 +69,7 @@
             
             <div class="form-condition">
                 <label for="tradingterms">Jeg acceptere hermed Foodit's handelsbetingelser</label>
-                <input type="checkbox" name="tradingterms" id="tradingterms">
+                <input type="checkbox" name="tradingterms" id="tradingterms" required>
             </div>
 
             <input type="submit" class="btn btn-primary" value="Sælg vare"> 
@@ -171,6 +171,28 @@ const file = e.target.files[0]
        
         
     })
+    document
+  .getElementById("sellingFormUpload")
+  .addEventListener("submit", async (event) =>{
+    event.preventDefault();
+    const formElem = event.currentTarget;
+    const formData = new FormData(formElem);
+    const imageFile = document.querySelector("#foodUpload").files[0];
+    formData.append("fileToUpload", imageFile);
+    const url = "/server/goods/sellProductBackend.php";
+    const options = {
+      method: "POST",
+      body: formData,
+      headers: {
+        "Access-Control-Allow-Headers": "Content-Type/mutipart-formdata",
+      },
+    };
+
+    const response = await fetch(url, options);
+    const result = await response.text();
+    console.log(result);
+  });
+
 </script>
 
 <!-- <script>
