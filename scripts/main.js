@@ -7,6 +7,7 @@ const spa = new SPA(routes);
 console.log("spa: ", spa);
 
 //evetlisteners
+<<<<<<< HEAD
 document
   .getElementById("sellingFormUpload")
   .addEventListener("submit", async function postForm(event) {
@@ -29,20 +30,18 @@ document
     const result = await response.text();
     console.log(result);
   });
+=======
+>>>>>>> 9873f2f7b54e61582b22fffc6bd570702c24fb31
 
 const fileUploadFood = document.getElementById("foodUpload");
 
-fileUploadFood.addEventListener("change", function change(e) {
+fileUploadFood.addEventListener("change", (e) => {
   checkSize(e.currentTarget);
 });
 
-document
-  .getElementById("onboardForward")
-  .addEventListener("click", function click() {
-    changeForward();
-  });
-document
-  .getElementById("onboardBackward")
-  .addEventListener("click", function click() {
-    changeBack();
-  });
+document.getElementById("onboardForward").addEventListener("click", () => {
+  changeForward();
+});
+document.getElementById("onboardBackward").addEventListener("click", () => {
+  changeBack();
+});

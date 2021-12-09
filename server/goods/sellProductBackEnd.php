@@ -1,4 +1,6 @@
 <?php
+session_start();
+include '../classes/SellProduct.php';
 
 
 $dbh = new mysqli($host, $username, $password, $database);
@@ -71,7 +73,10 @@ $sql="INSERT INTO varer (titel,pris,billede,afhentningstid,saelger,beskrivelse,b
 
 
 
+$post=$_POST;
+$files=$_FILES;
 
+$sellProduct= new sellProduct($post,$files);
 
 
 ?>
