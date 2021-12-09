@@ -18,11 +18,13 @@ document
     const options = {
       method: "POST",
       body: new FormData(formElem),
-      headers: { "Access-Control-Allow-Headers": "Content-Type" },
+      headers: {
+        "Access-Control-Allow-Headers": "Content-Type/mutipart-formdata",
+      },
     };
 
     const response = await fetch(url, options);
-    const result = await response.json();
+    const result = response;
     console.log(result);
   });
 
