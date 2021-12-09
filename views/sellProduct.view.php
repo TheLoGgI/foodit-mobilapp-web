@@ -1,13 +1,13 @@
 <section data-route id="sellProduct" class="sell-product-container">
         <h1 class="heading">Sælg en madvare</h1>
 
-        <form action=""  method="post" enctype="multipart/form-data">
+        <form action="" id="sellingFormUpload" method="post" enctype="multipart/form-data">
             <div class="form-field field-file">
                     <label for="foodUpload" class="">
                         <div class="">Tilføj billede</div>
                         <img id="userprofilimage" src="./images/default-food-image.jpg" alt="food" width="200" height="200">
                     </label>
-                <input class="sell-filupload hidden" type="file" id="foodUpload">
+                <input class="sell-filupload hidden" name="fileToUpload" type="file" id="foodUpload">
             </div>
             <div class="form-field">
                 <label for="producttitle">Title på vare</label>
@@ -156,8 +156,12 @@
 <script>
     const userprofilimage = document.getElementById('userprofilimage')
     document.getElementById('foodUpload')?.addEventListener('change', (e) => {
-        const file = e.target.files[0]
+        
+const file = e.target.files[0]
         userprofilimage.src = URL.createObjectURL(file);
+
+       
+        
     })
 </script>
 
