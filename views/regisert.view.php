@@ -27,9 +27,7 @@
                 <input type="password" name="reRegisterPassword" id="reRegisterPasswordrepeat" autocomplete="new-password">
             </div>
 
-        <input class="btn btn-primary" type="submit" name="submit" value="Login">
-
-        <a class="btn btn-secoundary to-front" type="button" href="/">Opret bruger</a>
+        <input class="btn btn-primary" type="submit" name="submit" value="Opret bruger">
 
         </form>
         <img class="bg-figure" src="./images/grocery-bag.jpg" width="600" height="800" alt="indkøbs taske">
