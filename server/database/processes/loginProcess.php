@@ -43,11 +43,12 @@ if(isset($_POST['submit'])) {
                         exit;
                     }
                 }
-            header('Location:/dashboard/?success=loggedIn');
+            header('Location:/dashboard?success=loggedIn');
             exit;
             } else{
             header('Location:/?error=userloginFailed');
             exit;
+
             
         }
         }
