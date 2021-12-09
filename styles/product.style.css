@@ -1,0 +1,57 @@
+.product-container {
+    padding: 2rem 1rem 4rem 1rem;
+    /* min-height: 100vh; */
+}
+
+.product-container h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--clr-action);
+}
+
+.product-container p {
+    line-height: 1.5rem;
+}
+
+.small-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-details {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.product-details .recipe-stars {
+    margin: .5rem 0;
+}
+
+.link {
+    text-decoration: underline;
+}
+
+.product-image-container {
+    min-width: 150px;
+    min-height: 150px;
+    width: 40%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: lightcyan;
+    border-radius: 4px;
+    flex-shrink: 3;
+}
+
+.pickup-details {
+    line-height: 1.2rem;
+}
+
+.product-informationdetails div + div {
+    margin-top: 1rem;
+}
+
+.similar-products h3 {
+    margin: 2rem 0rem 1rem 0rem;
+}
+

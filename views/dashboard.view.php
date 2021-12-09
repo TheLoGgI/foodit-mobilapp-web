@@ -8,60 +8,7 @@
     </div>
 
 
-    <div class="goods-scroll" id="dashboardProducts">
-        <div class="goods">
-            <div class="goods-image">
-                <img class="gd-image" src="../images/banan.png" alt="">
-                <div class="price-tag"><h5 class="price">20 kr.</h5></div>
-            </div>
-        <h4 class="goods-title">Bananer</h4>
-        <p class="seller-information">
-            Hanne Kofoed <br>
-            8000 Aarhus C
-        </p>
-        </div>
-  
-
-        <div class="goods">
-            <div class="goods-image">
-                <img class="gd-image" src="../images/banan.png" alt="">
-                <div class="price-tag"><h5 class="price">20 kr.</h5></div>
-            </div>
-        <h4 class="goods-title">Bananer</h4>
-        <p class="seller-information">
-            Hanne Kofoed <br>
-            8000 Aarhus C
-        </p>
-        </div>
-
-
-        <div class="goods">
-            <div class="goods-image">
-                <img class="gd-image" src="../images/banan.png" alt="">
-                <div class="price-tag"><h5 class="price">20 kr.</h5></div>
-            </div>
-        <h4 class="goods-title">Bananer</h4>
-        <p class="seller-information">
-            Hanne Kofoed <br>
-            8000 Aarhus C
-        </p>
-        </div>
-
-
-        <div class="goods">
-            <div class="goods-image">
-                <img class="gd-image" src="../images/banan.png" alt="">
-                <div class="price-tag"><h5 class="price">20 kr.</h5></div>
-            </div>
-        <h4 class="goods-title">Bananer</h4>
-        <p class="seller-information">
-            Hanne Kofoed <br>
-            8000 Aarhus C
-        </p>
-        </div>
-
-
-
+    <div class="goods-scroll" id="dashboardCloseTo">
 
     </div>
 
@@ -75,7 +22,7 @@
 
 
 
-<article class="goods-container">
+<article class="goods-container" >
 
     <div class="category-dashboard">
         <h3 class="goods-h3">Varer fra dine favoritter</h3>
@@ -83,57 +30,8 @@
     </div>
 
 
-    <div class="goods-scroll">
-        <div class="goods">
-            <div class="goods-image">
-                <img class="gd-image" src="../images/banan.png" alt="">
-                <div class="price-tag"><h5 class="price">20 kr.</h5></div>
-            </div>
-        <h4 class="goods-title">Bananer</h4>
-        <p class="seller-information">
-            Hanne Kofoed <br>
-            8000 Aarhus C
-        </p>
-        </div>
-  
-
-        <div class="goods">
-            <div class="goods-image">
-                <img class="gd-image" src="../images/banan.png" alt="">
-                <div class="price-tag"><h5 class="price">20 kr.</h5></div>
-            </div>
-        <h4 class="goods-title">Bananer</h4>
-        <p class="seller-information">
-            Hanne Kofoed <br>
-            8000 Aarhus C
-        </p>
-        </div>
-
-
-        <div class="goods">
-            <div class="goods-image">
-                <img class="gd-image" src="../images/banan.png" alt="">
-                <div class="price-tag"><h5 class="price">20 kr.</h5></div>
-            </div>
-        <h4 class="goods-title">Bananer</h4>
-        <p class="seller-information">
-            Hanne Kofoed <br>
-            8000 Aarhus C
-        </p>
-        </div>
-
-
-        <div class="goods">
-            <div class="goods-image">
-                <img class="gd-image" src="../images/banan.png" alt="">
-                <div class="price-tag"><h5 class="price">20 kr.</h5></div>
-            </div>
-        <h4 class="goods-title">Bananer</h4>
-        <p class="seller-information">
-            Hanne Kofoed <br>
-            8000 Aarhus C
-        </p>
-        </div>
+    <div class="goods-scroll" id="dashboardFavorites">
+        
     </div>
 
 </article>
@@ -227,34 +125,40 @@
             }
             const response = await fetch(options.requestUrl, options)
             
-            // console.log('response: ', response);
             if (response.ok) {
                 const requestData = await response.json()
-                // console.log('requestData: ', requestData);
-                constructElements(requestData.data)
+
+                const dataLength = requestData.data.length / 2
+                const closeTo = requestData.data.slice(0, Math.floor(dataLength) - 1)
+                const favorites = requestData.data.slice(Math.floor(dataLength))
+                window.data = requestData.data
+                constructElements(closeTo, 'dashboardCloseTo')
+                constructElements(favorites, 'dashboardFavorites')
             } else {
                 console.warn('fetch din\'t complete as intended')
             }
         }
 
-    function constructElements(productsArray) {
+    function constructElements(productsArray, id) {
 
-        const container = document.getElementById('dashboardProducts')
+        const container = document.getElementById(id)
 
         const htmlString = productsArray.reduce((acc, curr) => {
-            const {billede: image, pris: price, titel, address, postalCode, city} = curr
+            const {id, productImage, price, title, sellerName, address, postalcode} = curr
             return acc += `
+            <a href="/product?id=${id}" >
                 <div class="goods">
                     <div class="goods-image">
-                        <img class="gd-image" src="${image}" alt="">
+                        <img class="gd-image" src="${productImage}" alt="">
                         <div class="price-tag"><h5 class="price">${price} kr.</h5></div>
                     </div>
-                <h4 class="goods-title">${titel}</h4>
+                <h4 class="goods-title">${title}</h4>
                 <p class="seller-information">
-                    ${address} <br>
-                    ${postalCode} ${city}
+                    ${sellerName} <br>
+                    ${postalcode ?? 8000}, ${address ?? 'Aarhus'}
                 </p>
-                </div>`
+                </div>
+            </a>`
         }, '')
 
         container.innerHTML = htmlString

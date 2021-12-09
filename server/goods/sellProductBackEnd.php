@@ -1,11 +1,5 @@
 <?php
 
-var_dump($_POST);
-var_dump($_FILES);
-$host = "mysql95.unoeuro.com";
-$username = "stensgaard_medie_dk";
-$password = "MidlertidigKode12";
-$database = "stensgaard_medie_dk_db_web_dev";
 
 $dbh = new mysqli($host, $username, $password, $database);
 if(!$dbh){

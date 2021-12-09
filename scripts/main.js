@@ -15,8 +15,7 @@ document
     const formData = new FormData(formElem);
     const imageFile = document.querySelector("#foodUpload").files[0];
     formData.append("fileToUpload", imageFile);
-    //  const formData = new FormData(formElem);
-    //  console.log(formData);
+
     const url = "/server/goods/sellProductBackend.php";
     const options = {
       method: "POST",

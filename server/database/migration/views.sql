@@ -2,6 +2,7 @@ DROP VIEW IF EXISTS productDetailView;
 
 CREATE VIEW productDetailView AS
 SELECT 
+    varer.PK_id as id,
     varer.titel as title,
     varer.pris as price,
     varer.billede as productImage,

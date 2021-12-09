@@ -4,6 +4,7 @@ const Onboarding = document.getElementById("onboarding");
 const SellProduct = document.getElementById("sellProduct");
 const Dashboard = document.getElementById("dashboard");
 const Recipes = document.getElementById("recipes");
+const Product = document.getElementById("product");
 
 const routes = [
   {
@@ -31,11 +32,15 @@ const routes = [
     title: "dashboard",
     component: Dashboard,
   },
-
   {
     path: "/recipes",
     title: "recipes",
     component: Recipes,
+  },
+  {
+    path: "/product",
+    title: "product",
+    component: Product,
   },
 ];
 

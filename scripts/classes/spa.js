@@ -27,6 +27,7 @@ class Navigate  {
         this.#links = this.#getAnchors();
         this.useSPA(spaCallback);
         this.#routes = routes
+        this.query = {}
             
         this.currentRoute = window.location.pathname;
         this.manageViews()
@@ -92,13 +93,25 @@ class Navigate  {
     * @return {void}
     */
     navigateTo(path) {
-        let route = this.getRoutes.find(route => route.path === path);
+        const pathUrl = new URL(path, window.location.origin);
+
+        let route = this.getRoutes.find(route => route.path === pathUrl.pathname);
         if (route) {
-            window.history.pushState("", document.title, location.origin + route.path);
+            window.history.pushState("", document.title, location.origin + route.path + pathUrl.search);
+            const quarySearchArray = pathUrl.search.split(/\?|=/)
+
+            // Creating custom event for page change
+            // Adding the route and id to the custom event
+            const event = new CustomEvent('page-change', { detail: {
+                route,
+                id: quarySearchArray ? Number(quarySearchArray[2]) : null
+            } });
+            document.dispatchEvent(event); // Dispaches the event, so that it fires the callback function
             document.title = route.title;
         } else {
             const route = this.getRoutes.find(route => route.title === 'fallback');
-            window.history.pushState("", document.title, location.origin + route.path);
+            console.log('location.origin + route.path + pathUrl.search: ', location.origin + route.path + pathUrl.search);
+            window.history.pushState("", document.title, location.origin + route.path + pathUrl.search);
             document.title = route.title;
         }
 
