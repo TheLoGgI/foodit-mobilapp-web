@@ -164,7 +164,7 @@
 <script>
     const userprofilimage = document.getElementById('userprofilimage')
     document.getElementById('foodUpload')?.addEventListener('change', (e) => {
-        
+         
 const file = e.target.files[0]
         userprofilimage.src = URL.createObjectURL(file);
 

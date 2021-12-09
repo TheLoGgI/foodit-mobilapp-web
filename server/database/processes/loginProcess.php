@@ -36,7 +36,7 @@ if(isset($_POST['submit'])) {
             if(mysqli_num_rows($userFound) > 0){
                 while($row = mysqli_fetch_assoc($userFound)){
                     if(password_verify($userPassword,$row['kodeord'])){
-                        $_SESSION['navn'] = $row['navn'];
+                        $_SESSION['user'] = $row;
                     }
                     if(!password_verify($userPassword,$row['kodeord'])){
                         header('Location:/?error=passwordWrong');

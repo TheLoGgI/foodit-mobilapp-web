@@ -205,7 +205,7 @@
             <img class="star" src="../icons/unfilledstar.svg" alt="">
         </div>
         <p class="recipes-information">
-           Havregrynskugler er bare standard på konfektfadet i juledagene - og så er de lækre. 
+        Havregrynskugler er bare standard på konfektfadet i juledagene - og så er de lækre. 
         </p>
         </div>
 

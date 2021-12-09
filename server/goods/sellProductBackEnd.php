@@ -2,10 +2,10 @@
 
 var_dump($_POST);
 var_dump($_FILES);
-$host="";
-$username="";
-$password="";
-$database="";
+$host = "mysql95.unoeuro.com";
+$username = "stensgaard_medie_dk";
+$password = "MidlertidigKode12";
+$database = "stensgaard_medie_dk_db_web_dev";
 
 $dbh = new mysqli($host, $username, $password, $database);
 if(!$dbh){
@@ -25,7 +25,7 @@ $vareSaelger=$_SESSION['user_name'];
 $vareStatus=1;
 
 $foodPic=$_FILES["fileToUpload"];
-$tagetFolder="images/products/";
+$tagetFolder="../../images/products/";
 $fileType=strtolower(pathinfo($foodPic["name"],PATHINFO_EXTENSION));
 $fileName=$vareSaelger.time().".".$fileType;
 $validFileTypes=['jpg','jpeg','png'];

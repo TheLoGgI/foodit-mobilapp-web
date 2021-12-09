@@ -1,7 +1,7 @@
+import checkSize from "./checkFileSize.js";
+import { changeBack, changeForward } from "./classes/onboarding.js";
 import SPA from "./classes/spa.js";
 import routes from "./routes.js";
-import checkSize from "./checkFileSize.js";
-import { changeForward, changeBack } from "./classes/onboarding.js";
 
 const spa = new SPA(routes);
 console.log("spa: ", spa);
@@ -27,7 +27,7 @@ document
     };
 
     const response = await fetch(url, options);
-    const result = response;
+    const result = await response.text();
     console.log(result);
   });
 
