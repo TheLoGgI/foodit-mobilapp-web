@@ -19,17 +19,17 @@
                 <header class="login-header">
                     <img src="./icons/logo.svg" width="250" height="100" alt="foodit trademark">
                 </header>
-                <form class="login-form" action="" method="post">
+                <form class="login-form" action="server/database/processes/loginProcess.php" method="post">
                     <div class="input-field">
-                        <label for="loginemail">Email</label>
-                        <input type="email" name="loginemail" id="loginemail" autocomplete="email">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" name="loginEmail" id="loginEmail" autocomplete="email">
                     </div>
                     <div class="input-field">
-                        <label for="loginpassword">Kodeord</label>
-                        <input type="password" name="loginpassword" id="loginpassword" autocomplete="current-password">
+                        <label for="loginPassword">Kodeord</label>
+                        <input type="password" name="loginPassword" id="loginPassword" autocomplete="current-password">
                     </div>
 
-                <input class="btn btn-primary" type="submit" value="Login">
+                <input class="btn btn-primary" type="submit" name="submit" value="Login">
 
                 <a class="btn btn-secoundary to-front" type="button" href="/register">Opret bruger</a>
     
