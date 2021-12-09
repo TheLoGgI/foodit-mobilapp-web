@@ -12,12 +12,15 @@ document
   .addEventListener("submit", async function postForm(event) {
     event.preventDefault();
     const formElem = event.currentTarget;
+    const formData = new FormData(formElem);
+    const imageFile = document.querySelector("#foodUpload").files[0];
+    formData.append("fileToUpload", imageFile);
     //  const formData = new FormData(formElem);
     //  console.log(formData);
     const url = "/server/goods/sellProductBackend.php";
     const options = {
       method: "POST",
-      body: new FormData(formElem),
+      body: formData,
       headers: {
         "Access-Control-Allow-Headers": "Content-Type/mutipart-formdata",
       },

@@ -14,16 +14,24 @@
                 <input type="text" name="producttitle" id="producttitle">
             </div>
             <div class="form-field">
+                <label for="productprice">Pris på vare</label>
+                <input type="number" name="productprice" id="productprice">
+            </div>
+            <div class="form-field">
                 <label for="productdescription">Beskrivelse af varen</label>
                 <textarea class="" rows="5" cols="33" type="text" name="productdescription" id="productdescription"></textarea>
             </div>
             <div class="form-field">
                 <label for="bedstbeforedate">Bedst før dato</label>
-                <input type="text" name="bedstbeforedate" id="bedstbeforedate">
+                <input type="date" name="bedstbeforedate" id="bedstbeforedate">
+            </div>
+            <div class="form-field">
+                <label for="pickupday">Dag for afhenting</label>
+                <input type="date" name="pickupdate" id="pickupdate">
             </div>
             <div class="form-field">
                 <label for="pickuptime">Tidsrum for afhenting</label>
-                <input type="text" name="pickuptime" id="pickuptime">
+                <input type="time" name="pickuptime" id="pickuptime">
             </div>
             <div class="form-field">
             <label for="allergens">Allergener</label>
