@@ -7,7 +7,6 @@ const spa = new SPA(routes);
 console.log("spa: ", spa);
 
 //evetlisteners
-<<<<<<< HEAD
 document
   .getElementById("sellingFormUpload")
   .addEventListener("submit", async function postForm(event) {
@@ -30,8 +29,6 @@ document
     const result = await response.text();
     console.log(result);
   });
-=======
->>>>>>> 9873f2f7b54e61582b22fffc6bd570702c24fb31
 
 const fileUploadFood = document.getElementById("foodUpload");
 
