@@ -45,16 +45,23 @@
   flex-wrap: nowrap;
   overflow-x: scroll;
   z-index: 5;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-bottom: 15px;
 }
 
 .goods {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  max-width: 60%;
+  border-radius: 4px;
   z-index: 5;
-  margin: 0 .5rem;
+  margin-right: 1rem;
   background-color: #fff;
+}
+
+.goods-info {
+  padding: 4px;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -68,6 +75,11 @@
   height: 160px;
   overflow: hidden;
   z-index: 5;
+  border-radius: 4px 4px 0 0;
+}
+
+.gd-image {
+  width: 100%;
 }
 
 .price-tag {
@@ -89,12 +101,12 @@
 .goods-title {
   font-size: 16px;
   font-weight: 600;
-  margin: .5rem .3rem;
+  margin: 0.5rem 0;
   z-index: 5;
 }
 
 .seller-information {
-  margin: .5rem .3rem;
+  margin: 0.5rem 0;
   margin-top: 0;
   line-height: 1.2rem;
   z-index: 5;
@@ -129,12 +141,13 @@
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  margin: 20px;
+  margin-right: 20px;
   z-index: 5;
   background-color: #fff;
   min-width: 70%;
   max-width: 70%;
   resize: vertical;
+  border-radius: 4px;
 }
 
 /* On mouse-over, add a deeper shadow */
