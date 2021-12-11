@@ -8,6 +8,10 @@
     width: 100%;
     /* border-radius: 0px 0px 4px 4px; */
     transform: translateY(-100%);
+  }
+
+  .modal-active {
+    transform: translateY(0%);
     transition: transform 300ms ease-in-out 1s;
   }
   
@@ -17,5 +21,8 @@
   
   .modal-error {
     background-color: #b80514;
+  }
+  .modal-success {
+    background-color: #068847;
   }
   

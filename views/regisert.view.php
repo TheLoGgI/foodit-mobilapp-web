@@ -9,7 +9,7 @@
         <header class="login-header">
             <img src="./icons/logo.svg" width="250" height="100" alt="foodit trademark">
         </header>
-        <form class="login-form" action="../server/database/processes/signupProcess.php" method="post">
+        <form id="signupForm" class="login-form" action="../server/database/processes/signupProcess.php" method="post">
             <div class="input-field">
                 <label for="userName">Navn / Firmanavn</label>
                 <input type="text" name="userName" id="companyName" autocomplete="name">

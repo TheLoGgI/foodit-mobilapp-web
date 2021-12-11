@@ -1,18 +1,24 @@
 <?php 
 session_start();
 
-
-if(isset($_POST['submit'])) {
     include('../mysql.php');
 
 
     if(empty($_POST['loginEmail'])){
-        header('Location:/?error=emptyEmail');
-        exit;
+        header('Warning: empty Email');
+        // http_response_code(400);
+        exit(json_encode(array(
+            "statusText" => 'missing email', 
+            "status" => 400,
+        )));
     }
     if(empty($_POST['loginPassword'])){
-        header('Location:/?error=emptyPassword');
-        exit;
+        
+        // http_response_code(400);
+        exit(json_encode(array(
+            "statusText" => 'missing password', 
+            "status" => 400,
+        )));
     }
 
 
@@ -55,8 +61,6 @@ if(isset($_POST['submit'])) {
 
 
     }
-
-}
 
 
 ?>

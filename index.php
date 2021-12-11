@@ -9,7 +9,7 @@
     <link href="styles/main.style.css" rel="stylesheet"/>
 </head>
 <body>
-    <div class="modal modal-error" data-background-color="#0561b8">
+    <div id="infoModel" class="modal modal-error">
         <p id="modalText" class="modal-content">Forkert kodeord</p>
     </div>
     <div class="backdrop" id="backdrop"></div>
@@ -19,7 +19,7 @@
                 <header class="login-header">
                     <img src="./icons/logo.svg" width="250" height="100" alt="foodit trademark">
                 </header>
-                <form class="login-form" action="server/database/processes/loginProcess.php" method="post">
+                <form id="loginform" class="login-form" action="server/database/processes/loginProcess.php" method="post">
                     <div class="input-field">
                         <label for="loginEmail">Email</label>
                         <input type="email" name="loginEmail" id="loginEmail" autocomplete="email">
