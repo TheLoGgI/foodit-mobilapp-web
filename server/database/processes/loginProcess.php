@@ -36,7 +36,7 @@ if(isset($_POST['submit'])) {
             if(mysqli_num_rows($userFound) > 0){
                 while($row = mysqli_fetch_assoc($userFound)){
                     if(password_verify($userPassword,$row['kodeord'])){
-                        $_SESSION['user'] = $row;
+                        $_SESSION['navn'] = $row['navn'];
                     }
                     if(!password_verify($userPassword,$row['kodeord'])){
                         header('Location:/?error=passwordWrong');
@@ -44,6 +44,7 @@ if(isset($_POST['submit'])) {
                     }
                 }
             header('Location:/dashboard?success=loggedIn');
+            var_dump($row['navn']);
             exit;
             } else{
             header('Location:/?error=userloginFailed');

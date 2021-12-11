@@ -1,10 +1,3 @@
-<?php
-/*  include('../server/database/DBH.php'); */
-?>
-
-
-
-
 <section data-route id="register" class="login-container">
         <header class="login-header">
             <img src="./icons/logo.svg" width="250" height="100" alt="foodit trademark">
