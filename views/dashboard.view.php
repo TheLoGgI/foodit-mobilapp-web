@@ -117,7 +117,7 @@
 
             const options = {
                 method: 'get',
-                requestUrl: 'http://localhost:3000/api',
+                requestUrl: 'http://localhost:3000/api?action=getAllProducts',
                 headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -152,11 +152,14 @@
                         <img class="gd-image" src="${productImage}" alt="">
                         <div class="price-tag"><h5 class="price">${price} kr.</h5></div>
                     </div>
-                <h4 class="goods-title">${title}</h4>
+                    <div class="goods-info">
+                    <h4 class="goods-title">${title}</h4>
                 <p class="seller-information">
                     ${sellerName} <br>
                     ${postalcode ?? 8000}, ${address ?? 'Aarhus'}
                 </p>
+                    </div>
+                
                 </div>
             </a>`
         }, '')
@@ -167,3 +170,4 @@
 
         fetchProducts()
 </script>
+

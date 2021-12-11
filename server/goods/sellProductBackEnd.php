@@ -1,6 +1,8 @@
 <?php
+include '../database/creditials.php';
 session_start();
-include '../classes/SellProduct.php';
+$_SESSION['brugerID']=5;
+
 
 
 $dbh = new mysqli($host, $username, $password, $database);
@@ -9,74 +11,36 @@ if(!$dbh){
 }
 
 
+var_dump($_POST);
+var_dump($_FILES);
 
-$vareTitel=$_POST['producttitle'];
-$vareBeskrivelse=$_POST['productdescription'];
-$vareBedstFor=$_POST['bedstbeforedate'];
-$vareAfhentning=$_POST['pickuptime'];
-$vareAllergener=$_POST['allergens'];
-$varePris=$_POST['productprice'];
-$vareAfhentningsDag=$_POST['pickupdate'];
-$vareSaelger=$_SESSION['user_name'];
+$vareTitel=$_POST['titel'];
+$vareBeskrivelse=$_POST['beskrivelse'];
+$vareBedstFor=$_POST['bedstFor'];
+$vareAfhentning=$_POST['afhentning'];
+$vareAllergener=$_POST['allergener'];
+$varePris=$_POST['pris'];
+$vareSaelger=$_SESSION['brugerID'];
 $vareStatus=1;
 
-$foodPic=$_FILES["fileToUpload"];
-$tagetFolder="../../images/products/";
-$fileType=strtolower(pathinfo($foodPic["name"],PATHINFO_EXTENSION));
-$fileName=$vareSaelger.time().".".$fileType;
-$validFileTypes=['jpg','jpeg','png'];
-$fileLocation=$tagetFolder.$fileName;
-echo $tagetFolder.$fileName;
+$sql="INSERT INTO varer (titel,pris,billede,afhentningstid,saelger,beskrivelse,bedstFor,salgsStatus) 
+values('$vareTitel',$varePris,'billede','$vareAfhentning',$vareSaelger,'$vareBeskrivelse','$vareBedstFor',$vareStatus)";
+/*
 
 
-$sql="INSERT INTO varer (titel,pris,billede,afhentningstid,saelger,beskrivelse,bedstfor,salgsStatus,afhentningsDag) values('$vareTitel',$varePris,'$fileLocation','$vareAfhentning','$vareSaelger','$vareBeskrivelse','$vareBedstFor',$vareStatus,'$vareAfhentningsDag')";
+$sql="INSERT INTO varer (titel,pris,billede,afhentningstid,saelger,beskrivelse,bedstfor,salgsStatus) values('$vareTitel',50,'billede','2020-12-24 21:21:21','lasse','beskrivelse','2021-12-25',1)";
+*/
 
+//$dbh->query($sql);
+if($dbh->query($sql)){
+echo "yo";
 
-//if(!empty($vareTitel)&&!empty($vareBeskrivelse)&&!empty($varePris)&&!empty($vareAfhentning)&&!empty($vareBedstFor)&&!empty($vareStatus)){
-    if($dbh->query($sql)===TRUE){
+}else{
+    echo"no";
+    var_dump($sql);
 
-  if(move_uploaded_file($foodPic["tmp_name"],$tagetFolder.$fileName)){
-
-    //   if(filesize($foodPic)<2000000){
-        
-        echo "yo";
-        // }else{
-//header("location: createUser.php?error=fileToBig");
-       
-       // }
-
-//var_dump($fileName);
-    /*}else{
-         header("location: createUser.php?error=wronfFileType");
-         exit;
-    }
-    */
-      //header("location: welcome.php?signup=success");
-
-      // exit;
-   //    }else{
-           //header("location: createUser.php?signup=failed");
-       
-      // exit;
-     //  }
-       
-   }
 }
-//else{
-//echo "no";
 
-//}
-//}
-
-
-
-
-
-
-$post=$_POST;
-$files=$_FILES;
-
-$sellProduct= new sellProduct($post,$files);
-
+var_dump($host);
 
 ?>

@@ -9,5 +9,11 @@ class API extends Model
     public function products() {
         return $this->getAllProducts();
     }
+    public function singleProduct($productId) {
+        return $this->getSingleProduct($productId);
+    }
+    public function sellProduct($productId,$userid) {
+      return  $this->sellProduct($productId,$userid);
+    }
 
 }

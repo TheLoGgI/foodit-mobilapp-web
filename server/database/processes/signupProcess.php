@@ -47,7 +47,7 @@ if(isset($_POST['submit'])) {
         $inserted = mysqli_query($mySQL, $sql);
 
         if($inserted){
-            $_SESSION['user_name'] = $userName;
+            $_SESSION['navn'] = $userName;
 
             header('Location:../../../?success=userCreated');
             exit;

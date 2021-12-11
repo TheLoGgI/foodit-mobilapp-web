@@ -1,3 +1,9 @@
+<?php
+include('server/database/mysql.php');
+include('server/database/ses.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="da">
 <head>

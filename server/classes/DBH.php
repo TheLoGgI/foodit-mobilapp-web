@@ -5,7 +5,8 @@ class Dbh
     
     protected function connect()
     {
-        include 'creditials.php';
+       include '../database/creditials.php';
+
 
         try {
             $dbh = new mysqli($host, $username, $password, $database);
