@@ -32,7 +32,7 @@
         <header class="menu-header">
             <img src="./images/jake-nackos-resized-squere.jpg" width="200" height="200" alt="Profil af Camille">
             <div class="menu-content">
-                <p class="menu-name"><?php echo ucfirst($_SESSION['userName']);?></p>
+                <p class="menu-name"><?php echo ucfirst($_SESSION['navn']);?></p>
                 <p class="menu-address">8900, Randers</p>
                 <div class="rating" title="3 ud af 5 stjerner">
                     <img src="./icons/star-fill.svg" width="10" height="10" alt="star rating">
