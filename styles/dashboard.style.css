@@ -45,6 +45,7 @@
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
+  padding: 0 1rem;
   z-index: 5;
   min-height: 16rem;
 }

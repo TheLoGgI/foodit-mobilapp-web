@@ -1,60 +1,58 @@
 <?php
 
-session_start();
 
+header("Content-Type: application/json");
+header('Content-language: da');
+$protocol = (isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.1');
 
-if(isset($_POST['submit'])) {
+$request = json_decode(file_get_contents("php://input"));
+
     include('../mysql.php');
 
-    if(empty($_POST['userName'])){
-        header('Location:../../../views/register?error=emptyName');
+    if(empty($request->userName)){
+        header("$protocol 400 Intet navn indtasted");
         exit;
     } 
-    if(empty($_POST['registerEmail'])){
-        header('Location:../../../views/register?error=emptyEmail');
+    if(empty($request->registerEmail)){
+        header("$protocol 400 Ingen email indtasted");
         exit;
     } 
-    if(empty($_POST['registerPassword'])){
-        header('Location:../../../views/register?error=emptyPassword');
+    if(empty($request->registerPassword)){
+        header("$protocol 400 Intet kodeord indtasted");
         exit;
     } 
-      if(empty($_POST['reRegisterPassword'])){
-        header('Location:../../../views/register?error=emptyRePassword');
+      if(empty($request->reRegisterPassword)){
+        header("$protocol 400 Gengiv adgangskode");
         exit;
     } 
-     if($_POST['registerPassword'] !== $_POST['reRegisterPassword']){
-        header('Location:../../../views/register?error=passwordNeedToMatch');
+     if($request->registerPassword !== $request->reRegisterPassword){
+        header("$protocol 400 Adgangskoder stemmer ikke overens");
         exit;
     } 
 
-    if(!empty($_POST['userName']) && !empty($_POST['registerEmail']) && !empty($_POST['registerPassword']) && !empty($_POST['reRegisterPassword'])) {
         // Checking valid email
-
-        if(!filter_var($_POST['registerEmail'], FILTER_VALIDATE_EMAIL)) {
-            header('Location:../../../views/register?error=invalidEmail');
+        if(!filter_var($request->registerEmail, FILTER_VALIDATE_EMAIL)) {
+            header("$protocol 400 Skriv en rigtig email");
             exit;
         };
     
-    /*    
-
-    */
-        $userName = mysqli_real_escape_string($mySQL, strip_tags($_POST['userName'])); 
-        $userEmail = mysqli_real_escape_string($mySQL, strip_tags($_POST['registerEmail']));
-        $userPassword = password_hash(mysqli_real_escape_string($mySQL,$_POST['registerPassword']), PASSWORD_DEFAULT);
+        // Sanitize user input
+        $userName = mysqli_real_escape_string($mySQL, strip_tags($request->userName)); 
+        $userEmail = mysqli_real_escape_string($mySQL, strip_tags($request->registerEmail));
+        $userPassword = password_hash(mysqli_real_escape_string($mySQL, $request->registerPassword), PASSWORD_DEFAULT);
         
+        // Query DB for user data
         $sql = "INSERT INTO bruger(navn, email, kodeord) VALUES('$userName', '$userEmail', '$userPassword')";
-        
         $inserted = mysqli_query($mySQL, $sql);
 
         if($inserted){
-            $_SESSION['navn'] = $userName;
 
-            header('Location:../../../?success=userCreated');
+            header("$protocol 200 Bruger registeret");
             exit;
-        }else {
-            header('Location:../../../views/register?error=userCreateFailed');
+        } else {
+            header("$protocol 400 Fejl, Bruger blev ikke registeret");
             exit;
         }
 
-}}
+
 ?>

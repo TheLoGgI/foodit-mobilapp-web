@@ -5,10 +5,14 @@ class Dbh
     
     protected function connect()
     {
-       include '../database/creditials.php';
-
-
+        
+        
         try {
+            include 'creditials.php'; 
+            if (empty($host)) {
+                include '../database/creditials.php';
+            }
+            
             $dbh = new mysqli($host, $username, $password, $database);
             return $dbh;
         } catch (Exception $e) {

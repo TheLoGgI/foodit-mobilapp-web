@@ -25,14 +25,14 @@ include('server/database/ses.php');
                 <header class="login-header">
                     <img src="./icons/logo.svg" width="250" height="100" alt="foodit trademark">
                 </header>
-                <form id="loginform" class="login-form" action="server/database/processes/loginProcess.php" method="post">
+                <form id="loginform" class="login-form" action="server/database/processes/loginProcess.php" method="post" >
                     <div class="input-field">
                         <label for="loginEmail">Email</label>
-                        <input type="email" name="loginEmail" id="loginEmail" autocomplete="email">
+                        <input type="email" name="loginEmail" id="loginEmail" autocomplete="email" required>
                     </div>
                     <div class="input-field">
                         <label for="loginPassword">Kodeord</label>
-                        <input type="password" name="loginPassword" id="loginPassword" autocomplete="current-password">
+                        <input type="password" name="loginPassword" id="loginPassword" autocomplete="current-password" required>
                     </div>
 
                 <input class="btn btn-primary" type="submit" name="submit" value="Login">

@@ -1,11 +1,15 @@
 import checkSize from "./checkFileSize.js"
 import { changeBack, changeForward } from "./classes/onboarding.js"
 import SPA from "./classes/spa.js"
+import menuTemplate from "./menuDynamicTemplate.js"
 import {requestLogin, requestSignup} from "./requstLogin.js"
 import routes from "./routes.js"
 
 const spa = new SPA(routes)
+window.spa = spa
 console.log("spa: ", spa)
+
+menuTemplate()
 
 //evetlisteners
 document
@@ -45,53 +49,26 @@ document.getElementById("onboardBackward").addEventListener("click", () => {
 })
 
 
-export function modal(text, status) {
-  const model = document.getElementById("infoModel")
-  const modelContent = document.getElementById("modalText")
-  model.style.transition = "transform 300ms ease-in-out 1s";
-
-  modelContent.textContent = text
-  model.classList.add("modal-active")
-  const DOMTokenList = model.classList.length
-
-  switch (status) {
-    case "success":
-      if (DOMTokenList > 1) {
-        model.classList.replace("modal-error", "modal-success")
-      } else model.classList.add("modal-success")
-      break
-    case "error":
-      if (DOMTokenList > 1) {
-        model.classList.replace("modal-success", "modal-error")
-      } else model.classList.add("modal-error")
-      break
-    default: 
-      model.classList.remove("modal-error")
-      model.classList.remove("modal-success")
-      break
-  }
-
-  setTimeout(() => {
-    model.classList.remove("modal-active")
-  }, 2500)
-
-}
-
-
-
 document.getElementById('loginform').addEventListener('submit', (e) => {
   e.preventDefault()
   const formData = new FormData(e.target) 
-  requestLogin(formData)
+  requestLogin(formData, () => {
+    console.log('Logging in');
+    menuTemplate() // change menu navigation for logged in user
+    spa.navigateTo("/dashboard") // change view
+  })
+  e.target.reset()
 })
 
 document.getElementById('signupForm').addEventListener('submit', (e) => {
   e.preventDefault()
   const form = e.target
   const formData = new FormData(form) 
-  const response = requestSignup(formData)
-  console.log('response: ', response);
+
+  // login side
+  requestSignup(formData, () => spa.navigateTo("/")) 
   
+
   form.reset()
   
 })
