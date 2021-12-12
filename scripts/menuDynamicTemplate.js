@@ -19,10 +19,11 @@ export default function menuTemplate(isLoggedIn) {
 
     <div class="navigation-content">
         <ul class="navigation-list">
-            <li><a class="navigation-link" href="#">Mine tidliger køb</a></li>
+            <li><a class="navigation-link" href="#">Mine tidligere køb</a></li>
             <li><a class="navigation-link" href="#">Indstillinger</a></li>
             <li><a class="navigation-link" href="#">Favoritter</a></li>
             <li><a class="navigation-link" href="/sell-product">Sælg vare</a></li>
+            <li><a class="navigation-link" href="/my-products">Mine Produkter</a></li>
         </ul>
         
         <button id="signoutButton" class="navigation-logout">Log ud</button>

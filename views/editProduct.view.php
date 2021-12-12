@@ -2,13 +2,7 @@
         <h1 class="heading">Sælg en madvare</h1>
 
         <form action="" id="editProductForm" method="post" enctype="multipart/form-data">
-            <div class="form-field field-file">
-                    <label for="foodUpload" class="">
-                        <div class="">Tilføj billede</div>
-                        <img id="userprofilimage-edit" src="./images/default-food-image.jpg" alt="food" width="200" height="200">
-                    </label>
-                <input class="sell-filupload hidden" name="fileToUpload" type="file" id="foodUpload-edit" required>
-            </div>
+            
             <div class="form-field">
                 <label for="producttitle">Title på vare</label>
                 <input type="text" name="producttitle" id="producttitle-edit" required>
@@ -55,7 +49,7 @@
             
            
 
-            <input type="submit" class="btn btn-primary" value="Sælg vare"> 
+            <input type="submit" class="btn btn-primary" value="Opdater vare"> 
         </form>
 </section>
 
@@ -67,6 +61,7 @@
 
     .edit-product-container {
         padding: 1rem;
+        min-height: 100vh;
     }
 
     .edit-product-container .heading {
@@ -147,6 +142,10 @@
 
 
 <script>
+
+
+
+idInfo=sessionStorage.getItem('goodsToEditId');
  async function fetchProductInfo(productId) {
         const url = "http://localhost:3000/api?action=getSingleProduct&productId=" + productId;
         const options = {
@@ -170,12 +169,19 @@
     }
 
 
-    async function insertProductInfo(){
-       
-const idInfo=sessionStorage.getItem('goodsToEditId');
+    async function insertProductInfo(){   
+
 let dataToEdit=await fetchProductInfo(idInfo);
-console.log(dataToEdit)
-;
+console.log(dataToEdit);
+
+
+document.getElementById('producttitle-edit').value=dataToEdit.title;
+document.getElementById('productprice-edit').value=dataToEdit.price;
+document.getElementById('productdescription-edit').value=dataToEdit.description;
+document.getElementById('bedstbeforedate-edit').value=dataToEdit.bestBefore;
+document.getElementById('pickupdate-edit').value=dataToEdit.pickupDay;
+document.getElementById('pickuptime-edit').value=dataToEdit.pickupTime;
+document.getElementById('allergens-edit').value=dataToEdit.allegenes;
 
     }
 
@@ -187,10 +193,35 @@ document.addEventListener('page-change', (e) => {
             insertProductInfo()
         }
 
-    })
+    });
 
 
 
+
+
+      document
+  .getElementById("editProductForm")
+  .addEventListener("submit", async (event) =>{
+    event.preventDefault();
+    const formElem = event.currentTarget;
+    const formData = new FormData(formElem);
+    const user=JSON.parse(sessionStorage.getItem('user'))
+    const userID=user.id;
+    formData.append("userIdVar", userID)
+    formData.append("productIdVar", idInfo)
+    const url = 'http://localhost:3000/server/goods/editProductBackEnde.php';
+    const options = {
+      method: "POST",
+      body: formData,
+      headers: {
+        "Access-Control-Allow-Headers": "Content-Type/mutipart-formdata",
+      },
+    };
+
+    const response = await fetch(url, options);
+    const result = await response.text();
+    console.log(result);
+  });
 
 
 </script>

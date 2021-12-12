@@ -15,7 +15,8 @@
 <script>
  function saveGoodsId(id){
 const goodToEditId=id;
-
+console.log(goodToEditId)
+sessionStorage.setItem('goodsToEditId', goodToEditId);
 
  }
     

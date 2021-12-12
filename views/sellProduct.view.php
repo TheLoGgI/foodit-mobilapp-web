@@ -182,7 +182,7 @@ const file = e.target.files[0]
     const userID=user.id;
     formData.append("fileToUpload", imageFile);
     formData.append("userIdVar", userID)
-    const url = 'http://localhost:3000/server/goods/sellProductBackEnde.php';
+    const url = 'http://localhost:3000/api?action=setProductForSale';
     const options = {
       method: "POST",
       body: formData,
