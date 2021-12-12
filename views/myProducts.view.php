@@ -22,6 +22,7 @@ sessionStorage.setItem('goodsToEditId', goodToEditId);
     
  async function fetchMyProducts() {
     const user = JSON.parse(sessionStorage.getItem('user'))
+    if (user === null) return
     userId=user.id;
 
 

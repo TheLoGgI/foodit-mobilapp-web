@@ -40,9 +40,11 @@ $request = json_decode(file_get_contents("php://input"));
         $userName = mysqli_real_escape_string($mySQL, strip_tags($request->userName)); 
         $userEmail = mysqli_real_escape_string($mySQL, strip_tags($request->registerEmail));
         $userPassword = password_hash(mysqli_real_escape_string($mySQL, $request->registerPassword), PASSWORD_DEFAULT);
+        $postalCode = mysqli_real_escape_string($mySQL, strip_tags($request->registerCity)); 
+        $vej = mysqli_real_escape_string($mySQL, strip_tags($request->registerAddress)); 
         
         // Query DB for user data
-        $sql = "INSERT INTO bruger(navn, email, kodeord) VALUES('$userName', '$userEmail', '$userPassword')";
+        $sql = "INSERT INTO bruger(navn, email, kodeord, postnummer, vej) VALUES('$userName', '$userEmail', '$userPassword', '$postalCode', '$vej')";
         $inserted = mysqli_query($mySQL, $sql);
 
         if($inserted){

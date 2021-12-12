@@ -8,6 +8,14 @@
                 <input type="text" name="userName" id="companyName" autocomplete="name" required>
             </div>
             <div class="input-field">
+                <label for="registerCity">Postnummer</label>
+                <input type="text" name="registerCity" id="registerCity" autocomplete="address-level2" required>
+            </div>
+            <div class="input-field">
+                <label for="registerAddress">Addresse</label>
+                <input type="text" name="registerAddress" id="registerAddress" autocomplete="street-address" required>
+            </div>
+            <div class="input-field">
                 <label for="registerEmail">Email</label>
                 <input type="email" name="registerEmail" id="registerEmail" autocomplete="email" required>
             </div>
@@ -21,7 +29,6 @@
             </div>
 
         <input class="btn btn-primary" type="submit" name="submit" value="Opret bruger">
-
 
         </form>
         <img class="bg-figure" src="./images/grocery-bag.jpg" width="600" height="800" alt="indkøbs taske">
