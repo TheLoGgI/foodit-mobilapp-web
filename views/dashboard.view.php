@@ -156,7 +156,7 @@
                     <h4 class="goods-title">${title}</h4>
                 <p class="seller-information">
                     ${sellerName} <br>
-                    ${postalcode ?? 8000}, ${address ?? 'Aarhus'}
+                    ${postalcode ?? 8000}
                 </p>
                     </div>
                 

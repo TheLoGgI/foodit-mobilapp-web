@@ -1,18 +1,18 @@
-import checkSize from "./checkFileSize.js"
-import { changeBack, changeForward } from "./classes/onboarding.js"
-import SPA from "./classes/spa.js"
-import menuTemplate from "./menuDynamicTemplate.js"
-import {requestLogin, requestSignup} from "./requstLogin.js"
-import routes from "./routes.js"
+import checkSize from "./checkFileSize.js";
+import { changeBack, changeForward } from "./classes/onboarding.js";
+import SPA from "./classes/spa.js";
+import menuTemplate from "./menuDynamicTemplate.js";
+import { requestLogin, requestSignup } from "./requstLogin.js";
+import routes from "./routes.js";
 
-const spa = new SPA(routes)
-window.spa = spa
-console.log("spa: ", spa)
+const spa = new SPA(routes);
+window.spa = spa;
+console.log("spa: ", spa);
 
-menuTemplate()
+menuTemplate();
 
 //evetlisteners
-document
+/*document
   .getElementById("sellingFormUpload")
   .addEventListener("submit", async function postForm(event) {
     event.preventDefault()
@@ -34,41 +34,38 @@ document
     const result = await response.text()
     console.log(result)
   })
-
-const fileUploadFood = document.getElementById("foodUpload")
+*/
+const fileUploadFood = document.getElementById("foodUpload");
 
 fileUploadFood.addEventListener("change", (e) => {
-  checkSize(e.currentTarget)
-})
+  checkSize(e.currentTarget);
+});
 
 document.getElementById("onboardForward").addEventListener("click", () => {
-  changeForward()
-})
+  changeForward();
+});
 document.getElementById("onboardBackward").addEventListener("click", () => {
-  changeBack()
-})
+  changeBack();
+});
 
-
-document.getElementById('loginform').addEventListener('submit', (e) => {
-  e.preventDefault()
-  const formData = new FormData(e.target) 
+document.getElementById("loginform").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
   requestLogin(formData, () => {
-    console.log('Logging in');
-    menuTemplate() // change menu navigation for logged in user
-    spa.navigateTo("/dashboard") // change view
-  })
-  e.target.reset()
-})
+    console.log("Logging in");
+    menuTemplate(); // change menu navigation for logged in user
+    spa.navigateTo("/dashboard"); // change view
+  });
+  e.target.reset();
+});
 
-document.getElementById('signupForm').addEventListener('submit', (e) => {
-  e.preventDefault()
-  const form = e.target
-  const formData = new FormData(form) 
+document.getElementById("signupForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
 
   // login side
-  requestSignup(formData, () => spa.navigateTo("/")) 
-  
+  requestSignup(formData, () => spa.navigateTo("/"));
 
-  form.reset()
-  
-})
+  form.reset();
+});

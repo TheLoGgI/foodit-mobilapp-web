@@ -178,8 +178,11 @@ const file = e.target.files[0]
     const formElem = event.currentTarget;
     const formData = new FormData(formElem);
     const imageFile = document.querySelector("#foodUpload").files[0];
+    const user=JSON.parse(sessionStorage.getItem('user'))
+    const userID=user.id;
     formData.append("fileToUpload", imageFile);
-    const url = "/server/goods/sellProductBackend.php";
+    formData.append("userIdVar", userID)
+    const url = 'http://localhost:3000/server/goods/sellProductBackEnde.php';
     const options = {
       method: "POST",
       body: formData,

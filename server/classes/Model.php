@@ -36,14 +36,31 @@ abstract class Model extends Dbh
             return $userDataCollection;
         }
     }
-    protected function sellProduct($productId,$userid){
+    protected function doSellProduct($productId,$userid){
         $dbConnection = $this->connect();
         
         $sql = "CALL sellProduct($productId,$userid)";
         $dbConnection->query($sql);
-       
-        
     }
+protected function getAllMyProducts($userId){
+        $dbConnection = $this->connect();
+        
+        $sql = "SELECT * FROM productDetailView where seller=$userId";
+       
+        $result = $dbConnection->query($sql);
+
+        if ($result->num_rows !== 0) {
+        
+            $userDataCollection = [];   
+            while ($obj = $result->fetch_object("stdClass")) {
+                $userDataCollection[] = $obj;
+            }
+            return $userDataCollection;
+        } 
+    }
+
+
+    
 
 
 }

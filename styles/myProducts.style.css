@@ -1,0 +1,27 @@
+.my-products {
+  padding: 15px;
+  min-height: 100vh;
+}
+
+.my-products h3 {
+  margin: 0;
+  font-weight: 600;
+  color: var(--clr-action);
+  z-index: 5;
+}
+.my-products .sub-heading {
+  margin-bottom: 20px;
+}
+.all-my-products {
+  display: flex;
+  flex-direction: column;
+}
+
+.all-my-products .goods-image {
+  width: 100% !important;
+}
+
+.all-my-products .goods {
+  margin: 0;
+  margin-bottom: 20px;
+}

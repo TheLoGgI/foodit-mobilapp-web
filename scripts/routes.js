@@ -5,6 +5,9 @@ const SellProduct = document.getElementById("sellProduct");
 const Dashboard = document.getElementById("dashboard");
 const Recipes = document.getElementById("recipes");
 const Product = document.getElementById("product");
+const purchaseSummary = document.getElementById("purchaseSummary");
+const myProducts = document.getElementById("myProducts");
+const editProduct = document.getElementById("editProduct");
 
 const routes = [
   {
@@ -41,6 +44,21 @@ const routes = [
     path: "/product",
     title: "product",
     component: Product,
+  },
+  {
+    path: "/purchase-summary",
+    title: "Purchase Summary",
+    component: purchaseSummary,
+  },
+  {
+    path: "/my-products",
+    title: "My Products",
+    component: myProducts,
+  },
+  {
+    path: "/edit-product",
+    title: "Edit Product",
+    component: editProduct,
   },
 ];
 

@@ -1,10 +1,16 @@
 <?php
 
+
 class Dbh
 {
     
     protected function connect()
     {
+        $host = "mysql95.unoeuro.com";
+$username = "stensgaard_medie_dk";
+$password = "MidlertidigKode12";
+$database = "stensgaard_medie_dk_db_web_dev";
+
         
         
         try {

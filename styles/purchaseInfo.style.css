@@ -1,0 +1,36 @@
+.purchase-head {
+  height: 160px;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(../images/products/1639128428.jpg);
+  background-size: cover;
+}
+
+.purchase-head h3 {
+  margin: 0;
+  font-weight: 600;
+  color: #fff;
+  z-index: 5;
+  line-height: 160px;
+}
+
+.purchase-info-text {
+  margin-bottom: 20px;
+}
+
+.purchase-seller-text {
+  margin-bottom: 20px;
+}
+
+.purchase-seller-text h4,
+.purchase-location-info h4 {
+  margin: 0;
+  font-weight: 600;
+  color: var(--clr-action);
+  z-index: 5;
+}
+
+.purchase-summary-body {
+  padding: 15px;
+}

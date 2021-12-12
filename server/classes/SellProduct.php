@@ -33,13 +33,15 @@ $this->vareAfhentning=$postVar['pickuptime'];
 $this->vareAllergener=$postVar['allergens'];
 $this->varePris=$postVar['productprice'];
 $this->vareAfhentningsDag=$postVar['pickupdate'];
-$this->vareSaelger=5/*$_SESSION['PK_id']*/;
+$this->vareSaelger=$postVar['userIdVar'];
 $this->vareStatus=1;
 $this->foodPic=$filesVar["fileToUpload"];
 $this->fileType=strtolower(pathinfo($this->foodPic["name"],PATHINFO_EXTENSION));
 $this->fileName=$this->vareSaelger.time().".".$this->fileType;
 $this->validFileTypes=['jpg','jpeg','png'];
 $this->fileLocation=$this->tagetFolder.$this->fileName;
+var_dump($postVar);
+var_dump($filesVar);
 
 $this->uploadToDatabase();
 
@@ -63,7 +65,9 @@ $this->movePicture();
 }
 
 private function movePicture(){
-    if($this->foodPic['size']<2000000){
+    if($this->foodPic['size']<2000000&&in_array($this->filetype,$this->validFileTypes)){
+
+
 move_uploaded_file($this->foodPic["tmp_name"],$this->tagetFolder.$this->fileName);
 echo 'Din vare er blevet sat til salg';
 }

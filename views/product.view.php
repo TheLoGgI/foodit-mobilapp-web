@@ -265,6 +265,7 @@
         console.log('response: ', response);
 
         if (response.ok) {
+            spa.navigateTo('/purchase-summary')
             console.log("yay")
             // const requestData = await response.json()
         } else {

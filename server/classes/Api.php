@@ -13,7 +13,10 @@ class API extends Model
         return $this->getSingleProduct($productId);
     }
     public function sellProduct($productId,$userid) {
-      return  $this->sellProduct($productId,$userid);
+      $this->doSellProduct($productId,$userid);
+    }
+    public function getMyProducts($userId) {
+        return $this->getAllMyProducts($userId);
     }
 
 }
