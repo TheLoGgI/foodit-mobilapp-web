@@ -15,7 +15,7 @@ export async function requestLogin(datapack, cb) {
     }
 
     const response = await fetch(options.requestUrl, options)
-    console.log('response: ', response);
+    
     if (response.ok) {
         const requestData = await response.json()
 
@@ -47,9 +47,7 @@ export async function requestSignup(datapack, cb) {
         body: JSON.stringify(Object.fromEntries(datapack))
     }
     const response = await fetch(options.requestUrl, options)
-    console.log('response: ', response);
-    const requestData = await response.text()
-    console.log('requestData: ', requestData);
+
     if (response.ok) {
         cb?.()
         modal(response.statusText, 'success')
@@ -57,3 +55,9 @@ export async function requestSignup(datapack, cb) {
         modal(response.statusText, 'error')
     }
 }
+
+export function signout(cb) {
+    sessionStorage.removeItem('user')
+    cb?.()
+  }
+  

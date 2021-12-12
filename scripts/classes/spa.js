@@ -159,7 +159,6 @@ class Navigate  {
             }
         }, null);
         
-        console.log('currentView: ', currentView);
         return currentView
     }
 

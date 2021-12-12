@@ -1,6 +1,4 @@
-export default function menuTemplate() {
-  const user = typeof JSON.parse(sessionStorage.getItem("user")) === "object";
-
+export default function menuTemplate(isLoggedIn) {
   const userLoggedIn = `
     <header class="menu-header">
         <img src="./images/jake-nackos-resized-squere.jpg" width="200" height="200" alt="Profil af Camille">
@@ -40,21 +38,9 @@ export default function menuTemplate() {
 
     <div class="navigation-content">            
         <a href="/" class="navigation-logout">Log ind</a>
-    </div>
+    </div>`;
 
-`;
-
-  const html = user ? userLoggedIn : userNotLoggedIn;
+  const html = isLoggedIn ? userLoggedIn : userNotLoggedIn;
 
   document.getElementById("navigationMenu").innerHTML = html;
-
-  if (user) {
-    const signout = document.getElementById("signoutButton");
-    console.log("signout: ", signout);
-    signout.addEventListener("click", () => {
-      sessionStorage.removeItem("user");
-      spa.navigateTo("/");
-      menuTemplate();
-    });
-  }
 }
