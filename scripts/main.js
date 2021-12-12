@@ -2,14 +2,16 @@ import checkSize from "./checkFileSize.js"
 import { changeBack, changeForward } from "./classes/onboarding.js"
 import SPA from "./classes/spa.js"
 import menuTemplate from "./menuDynamicTemplate.js"
-import {requestLogin, requestSignup} from "./requstLogin.js"
+import {requestLogin, requestSignup, signout} from "./requstLogin.js"
 import routes from "./routes.js"
 
 const spa = new SPA(routes)
 window.spa = spa
 console.log("spa: ", spa)
 
-menuTemplate()
+const isUserLoggedIn = sessionStorage.getItem('user') !== null
+menuTemplate(isUserLoggedIn)
+
 
 //evetlisteners
 document
@@ -53,8 +55,15 @@ document.getElementById('loginform').addEventListener('submit', (e) => {
   e.preventDefault()
   const formData = new FormData(e.target) 
   requestLogin(formData, () => {
-    console.log('Logging in');
-    menuTemplate() // change menu navigation for logged in user
+
+    // Swich menu
+    menuTemplate(true) // change menu navigation for logged in user
+    const signoutButton = document.getElementById("signoutButton")
+    signoutButton.addEventListener("click", () => {
+      signout(spa.navigateTo("/"))
+      menuTemplate(false)
+    })
+    
     spa.navigateTo("/dashboard") // change view
   })
   e.target.reset()
@@ -72,3 +81,6 @@ document.getElementById('signupForm').addEventListener('submit', (e) => {
   form.reset()
   
 })
+
+
+
