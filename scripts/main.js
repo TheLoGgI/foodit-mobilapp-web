@@ -1,6 +1,11 @@
-import { changeBack, changeForward } from "./onboarding.js";
+import "./product.js";
+import "./sellProducts.js";
+import "./purchaseSummary.js";
+import "./myProducts.js";
+
 import SPA from "./classes/spa.js";
 import menuTemplate from "./menuDynamicTemplate.js";
+import { changeBack, changeForward } from "./onboarding.js";
 import { requestLogin, requestSignup, signout } from "./requstLogin.js";
 import routes from "./routes.js";
 
@@ -10,14 +15,6 @@ console.log("spa: ", spa);
 
 const isUserLoggedIn = sessionStorage.getItem("user") !== null;
 menuTemplate(isUserLoggedIn);
-
-//evetlisteners
-/*
-const fileUploadFood = document.getElementById("foodUpload");
-
-fileUploadFood.addEventListener("change", (e) => {
-  checkSize(e.currentTarget);
-});*/
 
 document.getElementById("onboardForward").addEventListener("click", () => {
   changeForward();
