@@ -22,6 +22,10 @@
                 <textarea class="" rows="5" cols="33" type="text" name="productdescription" id="productdescription" required></textarea>
             </div>
             <div class="form-field">
+                <label for="bedstbeforedate">Varens vægt i gram</label>
+                <input type="number" name="goodsWeight" id="goodsWeight" required>
+            </div>
+            <div class="form-field">
                 <label for="bedstbeforedate">Bedst før dato</label>
                 <input type="date" name="bedstbeforedate" id="bedstbeforedate" required>
             </div>
@@ -182,7 +186,7 @@ const file = e.target.files[0]
     const userID=user.id;
     formData.append("fileToUpload", imageFile);
     formData.append("userIdVar", userID)
-    const url = 'http://localhost:3000/api?action=setProductForSale';
+    const url = 'http://localhost:3000/server/goods/sellProductBackEnde.php';
     const options = {
       method: "POST",
       body: formData,
