@@ -221,6 +221,7 @@ document.addEventListener('page-change', (e) => {
     const response = await fetch(url, options);
     const result = await response.text();
     console.log(result);
+    spa.navigateTo('/my-products')
   });
 
 

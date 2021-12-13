@@ -247,14 +247,15 @@
         document.getElementById('popupOverlay').style.display = "none";
     });
 
-    async function sellProduct(productId, userId) {
+    async function sellProduct(productId, userId, productWeight) {
         const url = "http://localhost:3000/api?action=sellProduct";
         const options = {
             method: 'post',
             requestUrl: url,
             body: JSON.stringify({
                 'productId': productId,
-                'userId': userId
+                'userId': userId,
+                'productWeight':productWeight,
             }),
             headers: {
                 'Accept': 'application/json',
@@ -262,9 +263,13 @@
             },
         }
         const response = await fetch(options.requestUrl, options)
-        console.log('response: ', response);
+        responseData= await response.json()
+        console.log('response: ', responseData.data[0]);
+        sessionStorage.setItem('userWeightSaved',responseData.data[0].vaegtReddet)
+        console.log(sessionStorage.getItem('userWeightSaved'));
 
         if (response.ok) {
+
             spa.navigateTo('/purchase-summary')
             console.log("yay")
             // const requestData = await response.json()
@@ -273,12 +278,14 @@
         }
     }
 
+   
 
     document.getElementById('reserveProduct').addEventListener("click", () => {
 
         const productId = parseInt(_currentProduct.id);
+        const productWeight=parseInt(_currentProduct.weightOfGoods);
         const userid = Number(JSON.parse(sessionStorage.getItem('user')).id)
         console.log('userid: ', userid);
-        sellProduct(productId, userid)
+        sellProduct(productId, userid,productWeight)
     });
 </script>

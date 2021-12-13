@@ -25,11 +25,13 @@ $res = array(
 if($_GET['action']=="sellProduct"){
      $data=file_get_contents('php://input');
     $jsonData=json_decode($data);
-    $API->sellProduct($jsonData->productId,$jsonData->userId);
    
 $res = array(
     "statusText" => 'Success', 
-    "status" => 200);
+    "status" => 200,
+    "data" => $API->sellProduct($jsonData->productId,$jsonData->userId,$jsonData->productWeight)
+);
+
     
 
 }

@@ -76,7 +76,18 @@ for (const product of data) {
 
 
 }
- fetchMyProducts()
+ 
 
+
+  document.addEventListener('page-change', (e) => {
+        console.log('e: ', e);
+        const productId = e.detail.id
+        const route = e.detail.route.title
+        if (route === "My Products") {
+            
+           fetchMyProducts()
+        }
+
+    })
 
 </script>

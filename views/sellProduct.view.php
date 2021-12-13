@@ -54,21 +54,7 @@
                     <option value="lupin">Lupin</option>
                     <option value="bloddyr">Bløddyr</option>
                 </select>
-                <!-- <div class="picked-allergens" id="pickedAllergens">
-                    <div class="allergens-pick">
-                        <p class="allergens-label">Lupin</p>
-                        <button type="button" class="delete-pick" data-label="lupin">X</button>
-                    </div>
-                    <div class="allergens-pick">
-                        <p class="allergens-label">Lupin</p>
-                        <button type="button" class="delete-pick">X</button>
-                    </div>
-                    <div class="allergens-pick">
-                        <p class="allergens-label">Lupin</p>
-                        <button type="button" class="delete-pick">X</button>
-                    </div>
 
-                </div> -->
             </div>
             
             <div class="form-condition">
@@ -197,37 +183,7 @@ const file = e.target.files[0]
 
     const response = await fetch(url, options);
     const result = await response.text();
-    console.log(result);
+    spa.navigateTo('/my-products')
   });
 
 </script>
-
-<!-- <script>
-    const selectMenu = document.getElementById('allergens') 
-    console.log('selectMenu: ', selectMenu);
-    
-    const allergensArray = []
-    selectMenu.addEventListener('change', (e) => {
-        console.log(e.target.value);
-        allergensArray.push(e.target.value)
-        e.target.value = ''
-        
-    })
-
-function displayAllergens(allergnesArray) {
-    const allergensContainer = document.getElementById('pickedAllergens')
-    const template = `
-        <div class="allergens-pick">
-            <p class="allergens-label">${allergen}</p>
-            <button type="button" class="delete-pick" data-label="${allergen}">X</button>
-        </div>`
-
-    const templateString = allergnesArray.reduce((acc, current) => {
-        acc += template('')
-    }, '')
-}
-
-displayAllergens(allergensArray)
-
-
-</script> -->

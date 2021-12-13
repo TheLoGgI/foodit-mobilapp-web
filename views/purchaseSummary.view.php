@@ -39,6 +39,10 @@ Hvis spørgsmål skulle opstå</p>
 </section>
 <script>
 function showPurchaseInfo(){
+if(sessionStorage.getItem('userWeightSaved')){
+     console.log(sessionStorage.getItem('userWeightSaved'))
+    
+}
 const container=document.getElementById('purchaseSummary');
 let temp=`
 <div class="purchase-info" id="purchaseInfo">
@@ -48,14 +52,14 @@ let temp=`
 
 <div class="purchase-summary-body">
 <div class="purchase-info-text">
-<p>Du har denne gang reddet __gram mad, som ellers ville være gået til spilde! 
+<p>Du har denne gang reddet <b> ${_currentProduct.weightOfGoods}</b> gram mad, som ellers ville være gået til spilde! 
 <br>
-Du har nu i alt reddet __kg mad.</p>
+Du har nu i alt reddet <b> ${sessionStorage.getItem('userWeightSaved')} gram</b> mad.</p>
 </div>
 
 <div class="purchase-seller-text">
 <h4>Du har købt ${_currentProduct.title} af ${_currentProduct.sellerName}</h4>
-<p>${_currentProduct.sellerName} kan kontaktes på telefon:  <ahref="tel:12345678">+45123456</a>
+<p>${_currentProduct.sellerName} kan kontaktes på telefon:  <ahref="tel:12345678">+45_______</a>
 Hvis spørgsmål skulle opstå</p>
 </div>
 
@@ -77,10 +81,14 @@ document.getElementById('purchaseBackground').style.backgroundSize="cover"
 }
 
 
+
+
 document.addEventListener('page-change', (e) => {
+
      const route = e.detail.route.title
          if (route === 'Purchase Summary') {
                showPurchaseInfo();
+               console.log(JSON.parse(sessionStorage.getItem('user')))
         }
 
 

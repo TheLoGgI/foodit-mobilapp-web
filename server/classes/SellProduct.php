@@ -67,20 +67,61 @@ $this->movePicture();
 
 private function movePicture(){
     if($this->foodPic['size']<2000000&&in_array($this->fileType,$this->validFileTypes)){
+        var_dump($this->ResizeImage($this->foodPic, 800, $this->fileName, $this->tagetFolder));
+var_dump("det virker");
+
+}else{
+    var_dump("Filen var enten for stor eller ikke en tilladt filtype");
+}
+}
+
+private function  ResizeImage($fileToResize, $resizeDim, $newFileName, $targetFolder) {
+        $file = $fileToResize['tmp_name'];
+        $fileTarget = $targetFolder . $newFileName;
+
+        // Get the dimensions of the image file and resize it, while keeping the original aspect ratio
+        $fileDim = getimagesize($file);
+        $width = $fileDim[0];
+        $height = $fileDim[1];
+
+        $ratio = $width / $height;
+
+        if($ratio > 1) {
+            // Width is larger than height
+            $newWidth = $resizeDim;
+            $newHeight = $resizeDim / $ratio;
+        } else {
+            // Height is larger than width
+            $newWidth = $resizeDim * $ratio;
+            $newHeight = $resizeDim;
+        }
+
+        // Create a variable that stores the original image from the file that has been uploaded
+        $originalImage = imagecreatefromstring(file_get_contents($file));
+
+        // Create a variable that stores a new (blank) image with the dimensions of the scaled image
+        $newImage = imagecreatetruecolor($newWidth, $newHeight);
+
+        // Copy the original image to the new image, while rescaling it accordingly
+        imagecopyresampled($newImage, $originalImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height );
+
+        // Create and save the new image as PNG on the computer, and return a bool if it was a success (true) or failed (false)
+        $success = imagepng($newImage, $fileTarget);
+
+        // Delete the two images
+        imagedestroy($originalImage);
+        imagedestroy($newImage);
+        return $success;
+    }
 
 
-move_uploaded_file($this->foodPic["tmp_name"],$this->tagetFolder.$this->fileName);
+
+
+
 
 }
 
 
 
-
-
-
-}
-
-
-}
 
 ?>

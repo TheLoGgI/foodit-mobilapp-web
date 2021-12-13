@@ -57,6 +57,7 @@ if (!empty($request->loginEmail) && !empty($request->loginPassword)) {
                                 "address" => $user['vej'],
                                 "postalcode" => $user['postnummer'],
                                 "rating" => $user['rating'],
+                                "weightSaved"=>$user['vaegtReddet'],
                             ))
                         )
                     ));
