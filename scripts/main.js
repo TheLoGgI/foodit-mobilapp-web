@@ -1,5 +1,4 @@
-import checkSize from "./checkFileSize.js";
-import { changeBack, changeForward } from "./classes/onboarding.js";
+import { changeBack, changeForward } from "./onboarding.js";
 import SPA from "./classes/spa.js";
 import menuTemplate from "./menuDynamicTemplate.js";
 import { requestLogin, requestSignup, signout } from "./requstLogin.js";
@@ -13,34 +12,12 @@ const isUserLoggedIn = sessionStorage.getItem("user") !== null;
 menuTemplate(isUserLoggedIn);
 
 //evetlisteners
-/*document
-  .getElementById("sellingFormUpload")
-  .addEventListener("submit", async function postForm(event) {
-    event.preventDefault()
-    const formElem = event.currentTarget
-    const formData = new FormData(formElem)
-    const imageFile = document.querySelector("#foodUpload").files[0]
-    formData.append("fileToUpload", imageFile)
-
-    const url = "/server/goods/sellProductBackend.php"
-    const options = {
-      method: "POST",
-      body: formData,
-      headers: {
-        "Access-Control-Allow-Headers": "Content-Type/mutipart-formdata",
-      },
-    }
-
-    const response = await fetch(url, options)
-    const result = await response.text()
-    console.log(result)
-  })
-*/
+/*
 const fileUploadFood = document.getElementById("foodUpload");
 
 fileUploadFood.addEventListener("change", (e) => {
   checkSize(e.currentTarget);
-});
+});*/
 
 document.getElementById("onboardForward").addEventListener("click", () => {
   changeForward();

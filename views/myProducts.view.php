@@ -13,40 +13,42 @@
 </section>
 
 <script>
- function saveGoodsId(id){
-const goodToEditId=id;
-console.log(goodToEditId)
-sessionStorage.setItem('goodsToEditId', goodToEditId);
+//this function sets a session storage element base on the id its given
+function saveGoodsId(id){
+    const goodToEditId=id;
+    sessionStorage.setItem('goodsToEditId', goodToEditId);
+}
 
- }
-    
+//this function grabs the userID from sessionStorage
+//Sets the url and options for the fetch
+// then it uses fetch POST to send the userID to the server
+// it then checks if the response is .ok (status between 200-299)
+// if that is the case, it converts the data and uses it to call the constructMyElements function
  async function fetchMyProducts() {
     const user = JSON.parse(sessionStorage.getItem('user'))
-    if (user === null) return
     userId=user.id;
-
-
-            const options = {
-                method: 'POST',
-                requestUrl: 'http://localhost:3000/api?action=getMyProducts',
-                body:JSON.stringify({"userId":userId}),
-                headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-                },
-            }
-            const response = await fetch(options.requestUrl, options)
-            
-            if (response.ok) {
-                const requestData = await response.json()
-                const data=requestData.data
-                console.log(data)
-               constructMyElements(data)
-            } else {
-                console.warn('fetch din\'t complete as intended')
-            }
+    const url='http://localhost:3000/api?action=getMyProducts'
+    const options = {
+        method: 'POST',
+        requestUrl: url,
+        body:JSON.stringify({"userId":userId}),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    }
+    const response = await fetch(options.requestUrl, options)
+    if (response.ok) {
+        const requestData = await response.json()
+        const data=requestData.data
+        constructMyElements(data)
+    } else {
+        console.warn('fetch din\'t complete as intended')
+    }
         }
 
+// This function uses the data given to it, to visualize all of the products using a forof loop 
+// and adding them to the template, lastly it uses .innerHTML to show the tempalte on the frontend
 function constructMyElements(data){
     let temp='';
 let container =document.getElementById('allMyProducts');
@@ -67,27 +69,20 @@ for (const product of data) {
                     </div>
                 
                 </div>
-            </a>`
+            </a>`;
 }
-
- container.innerHTML = temp;
-
-
-
-
+container.innerHTML = temp;
 }
  
-
-
-  document.addEventListener('page-change', (e) => {
-        console.log('e: ', e);
-        const productId = e.detail.id
-        const route = e.detail.route.title
-        if (route === "My Products") {
-            
-           fetchMyProducts()
-        }
-
-    })
+//this evenetlistener listens for the custom event 'page-change'
+// and if the title of the page is equal to "My Products" it will call fetchMyProducts()
+document.addEventListener('page-change', (e) => {
+    console.log('e: ', e);
+    const productId = e.detail.id
+    const route = e.detail.route.title
+    if (route === "My Products") {       
+        fetchMyProducts()
+    }
+})
 
 </script>
