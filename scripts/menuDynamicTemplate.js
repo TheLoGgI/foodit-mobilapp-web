@@ -1,10 +1,12 @@
 export default function menuTemplate(isLoggedIn) {
-    const name = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')).name : '';
+  const name = sessionStorage.getItem("user")
+    ? JSON.parse(sessionStorage.getItem("user")).name
+    : "";
   const userLoggedIn = `
     <header class="menu-header">
         <img src="./images/jake-nackos-resized-squere.jpg" width="200" height="200" alt="Profil af Camille">
         <div class="menu-content">
-            <p class="menu-name">${name }</p>
+            <p class="menu-name">${name}</p>
             <p class="menu-address">0000, Enhøjningvej 100</p>
             <div class="rating" title="3 ud af 5 stjerner">
                 <img src="./icons/star-fill.svg" width="10" height="10" alt="star rating">
