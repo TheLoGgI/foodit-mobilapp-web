@@ -14,6 +14,7 @@ private $vareAfhentningsDag;
 private $vareSaelger;
 private $vareStatus;
 private $tagetFolder="../../images/products/";
+private $uploadFolder="images/products/";
 private $foodPic;
 private $fileType;
 private $fileName;
@@ -23,7 +24,6 @@ private $fileLocation;
 
 function __construct($postVar,$filesVar)
 {
-
     
    
 $this->vareTitel=$postVar['producttitle'];
@@ -40,7 +40,7 @@ $this->foodPic=$filesVar["fileToUpload"];
 $this->fileType=strtolower(pathinfo($this->foodPic["name"],PATHINFO_EXTENSION));
 $this->fileName=$this->vareSaelger.time().".".$this->fileType;
 $this->validFileTypes=['jpg','jpeg','png'];
-$this->fileLocation=$this->tagetFolder.$this->fileName;
+$this->fileLocation=$this->uploadFolder.$this->fileName;
 var_dump($postVar);
 var_dump($filesVar);
 
@@ -66,11 +66,11 @@ $this->movePicture();
 }
 
 private function movePicture(){
-    if($this->foodPic['size']<2000000&&in_array($this->filetype,$this->validFileTypes)){
+    if($this->foodPic['size']<2000000&&in_array($this->fileType,$this->validFileTypes)){
 
 
 move_uploaded_file($this->foodPic["tmp_name"],$this->tagetFolder.$this->fileName);
-echo 'Din vare er blevet sat til salg';
+
 }
 
 
