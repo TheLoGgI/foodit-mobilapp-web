@@ -12,7 +12,7 @@ class Dbh
         try {
             include 'creditials.php'; 
             if (empty($host)) {
-                include '../database/creditials.php';
+                include 'creditials.php';
             }
             
             $dbh = new mysqli($host, $username, $password, $database);
