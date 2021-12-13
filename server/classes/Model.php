@@ -9,7 +9,7 @@ abstract class Model extends Dbh
     protected function getAllProducts(){
         $dbConnection = $this->connect();
         
-        $sql = "SELECT * FROM productDetailView";
+        $sql = "SELECT * FROM productDetailView WHERE salesStatus !=0";
         $result = $dbConnection->query($sql);
 
         if ($result->num_rows !== 0) {

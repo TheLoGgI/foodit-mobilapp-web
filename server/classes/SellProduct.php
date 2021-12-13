@@ -34,6 +34,7 @@ $this->vareAllergener=$postVar['allergens'];
 $this->varePris=$postVar['productprice'];
 $this->vareAfhentningsDag=$postVar['pickupdate'];
 $this->vareSaelger=$postVar['userIdVar'];
+$this->vareVaegt=$postVar['goodsWeight'];
 $this->vareStatus=1;
 $this->foodPic=$filesVar["fileToUpload"];
 $this->fileType=strtolower(pathinfo($this->foodPic["name"],PATHINFO_EXTENSION));
@@ -53,7 +54,7 @@ private function uploadToDatabase(){
     echo $this->fileType;
     $dbConnection=$this->connect();
 
-$sql="INSERT INTO varer (titel,pris,billede,afhentningstid,saelger,beskrivelse,bedstfor,salgsStatus,afhentningsDag,allergener) values('$this->vareTitel',$this->varePris,'$this->fileLocation','$this->vareAfhentning','$this->vareSaelger','$this->vareBeskrivelse','$this->vareBedstFor',$this->vareStatus,'$this->vareAfhentningsDag','$this->vareAllergener')";
+$sql="INSERT INTO varer (titel,pris,billede,afhentningstid,saelger,beskrivelse,bedstfor,salgsStatus,afhentningsDag,allergener,vareVaegt) values('$this->vareTitel',$this->varePris,'$this->fileLocation','$this->vareAfhentning','$this->vareSaelger','$this->vareBeskrivelse','$this->vareBedstFor',$this->vareStatus,'$this->vareAfhentningsDag','$this->vareAllergener',$this->vareVaegt)";
 var_dump($sql);
 $result=$dbConnection->query($sql);
     
