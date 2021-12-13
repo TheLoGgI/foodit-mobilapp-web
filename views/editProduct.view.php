@@ -144,9 +144,12 @@
 <script>
 
 
-
-idInfo=sessionStorage.getItem('goodsToEditId');
- async function fetchProductInfo(productId) {
+// This function creates a url variable with an action and a GET parameter for the fetch, based on the productId given to it
+// it the set te options variable
+// It then does a fetch GET to the API-php
+// If the fetch resonse is .ok (status between 200-299) it will decode the response, and then return data from the request
+// If the fetch is not .ok it will give a warning in the console
+async function fetchProductInfo(productId) {
         const url = "http://localhost:3000/api?action=getSingleProduct&productId=" + productId;
         const options = {
             method: 'get',
@@ -157,70 +160,73 @@ idInfo=sessionStorage.getItem('goodsToEditId');
             },
         }
         const response = await fetch(options.requestUrl, options)
-
         if (response.ok) {
             const requestData = await response.json()
-
             productData = requestData.data
             return productData[0] 
         } else {
             console.warn('fetch din\'t complete as intended')
         }
-    }
+}
 
 
-    async function insertProductInfo(){   
+// This function first gets 'goodsToEditId' from the sessionStorage(which is set on myProducts)
+// It then calls the fetch function above with that ID as a parameter
+// Lastly it sets all of the inputs values equal to the data from the fetch
+async function insertProductInfo(){  
+    let idInfo=sessionStorage.getItem('goodsToEditId'); 
+    let dataToEdit=await fetchProductInfo(idInfo);
+    document.getElementById('producttitle-edit').value=dataToEdit.title;
+    document.getElementById('productprice-edit').value=dataToEdit.price;
+    document.getElementById('productdescription-edit').value=dataToEdit.description;
+    document.getElementById('bedstbeforedate-edit').value=dataToEdit.bestBefore;
+    document.getElementById('pickupdate-edit').value=dataToEdit.pickupDay;
+    document.getElementById('pickuptime-edit').value=dataToEdit.pickupTime;
+    document.getElementById('allergens-edit').value=dataToEdit.allegenes;
+}
 
-let dataToEdit=await fetchProductInfo(idInfo);
-console.log(dataToEdit);
-
-
-document.getElementById('producttitle-edit').value=dataToEdit.title;
-document.getElementById('productprice-edit').value=dataToEdit.price;
-document.getElementById('productdescription-edit').value=dataToEdit.description;
-document.getElementById('bedstbeforedate-edit').value=dataToEdit.bestBefore;
-document.getElementById('pickupdate-edit').value=dataToEdit.pickupDay;
-document.getElementById('pickuptime-edit').value=dataToEdit.pickupTime;
-document.getElementById('allergens-edit').value=dataToEdit.allegenes;
-
-    }
-
+//this evenetlistener listens for the custom event 'page-change'
+// and if the title of the page is equal to "Edit Product" it will call insertProductInfo()
 document.addEventListener('page-change', (e) => {
-        console.log('e: ', e);
+    console.log('e: ', e);
      
-        const route = e.detail.route.title
-        if (route === "Edit Product") {
+    const route = e.detail.route.title
+    if (route === "Edit Product") {
             insertProductInfo()
-        }
-
-    });
-
+    }
+});
 
 
 
 
-      document
-  .getElementById("editProductForm")
-  .addEventListener("submit", async (event) =>{
+//This eventlistener listens for the editProductForm to be submitted
+//When it is it will:
+// - prevent the page from reloading
+// - use FormData() to create a new form element from the form
+// - grab the userId from sessionStorage and append that to formData
+// - grabs the product ID from sessionStorage and appends that aswell
+// - it creates the url and options parts of a fetch
+// - it uses those to fetch POST all the data to the backend
+// - it then waits for a response and uses spa.navigateTo() to direct the user
+document.getElementById("editProductForm").addEventListener("submit", async (event) =>{
     event.preventDefault();
     const formElem = event.currentTarget;
     const formData = new FormData(formElem);
     const user=JSON.parse(sessionStorage.getItem('user'))
+    const idInfo=sessionStorage.getItem('goodsToEditId'); 
     const userID=user.id;
     formData.append("userIdVar", userID)
     formData.append("productIdVar", idInfo)
     const url = 'http://localhost:3000/server/goods/editProductBackEnde.php';
     const options = {
-      method: "POST",
-      body: formData,
-      headers: {
-        "Access-Control-Allow-Headers": "Content-Type/mutipart-formdata",
-      },
+        method: "POST",
+        body: formData,
+        headers: {
+            "Access-Control-Allow-Headers": "Content-Type/mutipart-formdata",
+        },
     };
-
     const response = await fetch(url, options);
     const result = await response.text();
-    console.log(result);
     spa.navigateTo('/my-products')
   });
 

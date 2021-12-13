@@ -2,8 +2,10 @@
 session_start();
 include 'DBH.php';
 
-
+// this class does the whole process of when a product is put up for sale
+// it extends the Dbh class from DBH.php
 class sellProduct extends Dbh{
+//all the variables are declared
 private $vareTitel;
 private $vareBeskrivelse;
 private $vareBedstFor;
@@ -22,10 +24,10 @@ private $validFileTypes=['jpg','jpeg','png'];
 private $fileLocation;
 
 
-function __construct($postVar,$filesVar)
-{
-    
-   
+//the construct function is excecuted when the class is initalized
+// it takes 2 parameters, the post variables and the files variable, which is given to it grom $_POST and $_FILES
+// it then sets all of the variables using these parameters
+function __construct($postVar,$filesVar){
 $this->vareTitel=$postVar['producttitle'];
 $this->vareBeskrivelse=$postVar['productdescription'];
 $this->vareBedstFor=$postVar['bedstbeforedate'];
@@ -41,51 +43,46 @@ $this->fileType=strtolower(pathinfo($this->foodPic["name"],PATHINFO_EXTENSION));
 $this->fileName=$this->vareSaelger.time().".".$this->fileType;
 $this->validFileTypes=['jpg','jpeg','png'];
 $this->fileLocation=$this->uploadFolder.$this->fileName;
-var_dump($postVar);
-var_dump($filesVar);
 
+//when all parameters are set, it calls uploadToDataBase()
 $this->uploadToDatabase();
 
 }
 
 
-
+// this function uses the connect function from the Dbh class
+// It creates the sql insert into string
+// uses it to do a query to the database
+// if the query is succsesfull it wil call movePicture()
 private function uploadToDatabase(){
-    echo $this->fileType;
     $dbConnection=$this->connect();
-
-$sql="INSERT INTO varer (titel,pris,billede,afhentningstid,saelger,beskrivelse,bedstfor,salgsStatus,afhentningsDag,allergener,vareVaegt) values('$this->vareTitel',$this->varePris,'$this->fileLocation','$this->vareAfhentning','$this->vareSaelger','$this->vareBeskrivelse','$this->vareBedstFor',$this->vareStatus,'$this->vareAfhentningsDag','$this->vareAllergener',$this->vareVaegt)";
-var_dump($sql);
-$result=$dbConnection->query($sql);
-    
-
-if($result){
-$this->movePicture();
-
-}
+    $sql="INSERT INTO varer (titel,pris,billede,afhentningstid,saelger,beskrivelse,bedstfor,salgsStatus,afhentningsDag,allergener,vareVaegt) values('$this->vareTitel',$this->varePris,'$this->fileLocation','$this->vareAfhentning','$this->vareSaelger','$this->vareBeskrivelse','$this->vareBedstFor',$this->vareStatus,'$this->vareAfhentningsDag','$this->vareAllergener',$this->vareVaegt)";
+    $result=$dbConnection->query($sql);
+    if($result){
+        $this->movePicture();
+    }
 }
 
+//This function checks the size of the file to upload and if it is a valid fileType
+// If that is the case it will call ResizeImage()
 private function movePicture(){
     if($this->foodPic['size']<2000000&&in_array($this->fileType,$this->validFileTypes)){
-        var_dump($this->ResizeImage($this->foodPic, 800, $this->fileName, $this->tagetFolder));
-var_dump("det virker");
-
-}else{
-    var_dump("Filen var enten for stor eller ikke en tilladt filtype");
-}
+        $this->ResizeImage($this->foodPic, 800, $this->fileName, $this->tagetFolder);
+    }else{
+        var_dump("Filen var enten for stor eller ikke en tilladt filtype");
+    }
 }
 
+// this function resizes the image and uploads it to the server
 private function  ResizeImage($fileToResize, $resizeDim, $newFileName, $targetFolder) {
         $file = $fileToResize['tmp_name'];
         $fileTarget = $targetFolder . $newFileName;
-
-        // Get the dimensions of the image file and resize it, while keeping the original aspect ratio
+        // Gets the dimensions of the image file and resize it, while keeping the original aspect ratio
         $fileDim = getimagesize($file);
         $width = $fileDim[0];
         $height = $fileDim[1];
-
+        //calculates the ratio
         $ratio = $width / $height;
-
         if($ratio > 1) {
             // Width is larger than height
             $newWidth = $resizeDim;
@@ -96,19 +93,19 @@ private function  ResizeImage($fileToResize, $resizeDim, $newFileName, $targetFo
             $newHeight = $resizeDim;
         }
 
-        // Create a variable that stores the original image from the file that has been uploaded
+        // Creates a variable that stores the original image from the file that has been uploaded
         $originalImage = imagecreatefromstring(file_get_contents($file));
 
-        // Create a variable that stores a new (blank) image with the dimensions of the scaled image
+        // Creates a variable that stores a new (blank) image with the dimensions of the scaled image
         $newImage = imagecreatetruecolor($newWidth, $newHeight);
 
-        // Copy the original image to the new image, while rescaling it accordingly
+        // Copies the original image to the new image, while rescaling it accordingly
         imagecopyresampled($newImage, $originalImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height );
 
-        // Create and save the new image as PNG on the computer, and return a bool if it was a success (true) or failed (false)
+        // Creates and saves the new image as PNG on the computer, and return a bool if it was a success (true) or failed (false)
         $success = imagepng($newImage, $fileTarget);
 
-        // Delete the two images
+        // Deletes the two images
         imagedestroy($originalImage);
         imagedestroy($newImage);
         return $success;

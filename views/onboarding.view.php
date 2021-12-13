@@ -5,7 +5,6 @@
 <div class="onboarding-figure">
 
       <img src="../images/onboarding_1.png" class="onboarding-image" id="onboardingImage1"alt="">
-      <img src="" alt="" id="onboardingImage2">
 </div>
 
 <div class="onboarding-text">
