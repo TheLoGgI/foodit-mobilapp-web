@@ -109,6 +109,7 @@ a {
   padding-block-start: var(--padding-block);
   padding-block-end: var(--padding-block);
   cursor: pointer;
+  text-align: center;
 }
 
 .btn-primary {

@@ -55,11 +55,14 @@ document.getElementById("loginform").addEventListener("submit", (e) => {
   requestLogin(formData, () => {
     // Swich menu
     menuTemplate(true); // change menu navigation for logged in user
+    
     const signoutButton = document.getElementById("signoutButton");
     signoutButton.addEventListener("click", () => {
       signout(spa.navigateTo("/"));
       menuTemplate(false);
     });
+    
+    spa.refrech()
 
     spa.navigateTo("/dashboard"); // change view
   });
@@ -76,3 +79,11 @@ document.getElementById("signupForm").addEventListener("submit", (e) => {
 
   form.reset();
 });
+
+const signoutButton = document.getElementById("signoutButton");
+signoutButton?.addEventListener("click", () => {
+  signout(spa.navigateTo("/"));
+  menuTemplate(false);
+  spa.refrech()
+});
+spa.refrech()

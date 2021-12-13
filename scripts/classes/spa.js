@@ -46,6 +46,7 @@ class Navigate  {
     **/
     useSPA(cb) {
         this.getLinks.forEach(item => {
+            item.setAttribute('spa', 'true');
             item.addEventListener('click', (e) => {
                 e.preventDefault();
                 if (cb) {
@@ -119,6 +120,11 @@ class Navigate  {
         // console.log('window.location.pathname: ', window.location.pathname);
         this.manageViews()
         
+    }
+
+    refrech() {
+        this.#links = this.#getAnchors();
+        this.useSPA();
     }
 
     /**  Gets all hrefs from anchor tags in the document
