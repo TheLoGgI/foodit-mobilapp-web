@@ -1,6 +1,6 @@
 <?php
 
-include "Dbh.php";
+include "DBH.php";
 
 
 abstract class Model extends Dbh

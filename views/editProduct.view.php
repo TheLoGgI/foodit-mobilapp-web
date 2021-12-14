@@ -150,7 +150,7 @@
 // If the fetch resonse is .ok (status between 200-299) it will decode the response, and then return data from the request
 // If the fetch is not .ok it will give a warning in the console
 async function fetchProductInfo(productId) {
-        const url = "http://localhost:3000/api?action=getSingleProduct&productId=" + productId;
+        const url = location.origin + "/api?action=getSingleProduct&productId=" + productId;
         const options = {
             method: 'get',
             requestUrl: url,
@@ -217,7 +217,7 @@ document.getElementById("editProductForm").addEventListener("submit", async (eve
     const userID=user.id;
     formData.append("userIdVar", userID)
     formData.append("productIdVar", idInfo)
-    const url = 'http://localhost:3000/server/goods/editProductBackEnde.php';
+    const url = location.origin + '/server/goods/editProductBackEnde.php';
     const options = {
         method: "POST",
         body: formData,

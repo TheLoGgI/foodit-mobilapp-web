@@ -105,6 +105,9 @@ a {
 
 /* Common components styles */
 .btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   --padding-inline: 1em;
   --padding-block: 0.5em;
   width: 100%;

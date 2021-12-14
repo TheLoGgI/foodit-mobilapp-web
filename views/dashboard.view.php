@@ -117,7 +117,7 @@
 
             const options = {
                 method: 'get',
-                requestUrl: 'http://localhost:3000/api?action=getAllProducts',
+                requestUrl: location.origin + '/api?action=getAllProducts',
                 headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
