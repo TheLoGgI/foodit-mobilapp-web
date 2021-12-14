@@ -22,7 +22,7 @@
             <button class="btn btn-primary" id="onboardForward">
                 videre
             </button>
-            <a class="btn btn-primary" href="/dashboard" id="onboardEnd">
+            <a class="btn btn-primary" href="/" id="onboardEnd">
                 Afslut
             </a>
 

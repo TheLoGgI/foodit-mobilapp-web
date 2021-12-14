@@ -56,6 +56,10 @@ body {
   width: 100vw; */
 }
 
+section[data-route] {
+  min-height: 100vh;
+}
+
 h1,
 h2,
 h3,

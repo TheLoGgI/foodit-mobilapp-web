@@ -7,11 +7,25 @@ import SPA from "./classes/spa.js";
 import menuTemplate from "./menuDynamicTemplate.js";
 import { changeBack, changeForward } from "./onboarding.js";
 import { requestLogin, requestSignup, signout } from "./requstLogin.js";
+import { checkCookie, setCookie } from "./cookie.js";
 import routes from "./routes.js";
 
 const spa = new SPA(routes);
 window.spa = spa;
 console.log("spa: ", spa);
+
+checkCookie(
+  "pl",
+  () => {
+    // success
+    spa.navigateTo("/dashboard");
+  },
+  () => {
+    // Failuar
+    spa.navigateTo("/onboarding");
+    setCookie("pl", "true", 100);
+  }
+);
 
 const isUserLoggedIn = sessionStorage.getItem("user") !== null;
 menuTemplate(isUserLoggedIn);
@@ -29,14 +43,14 @@ document.getElementById("loginform").addEventListener("submit", (e) => {
   requestLogin(formData, () => {
     // Swich menu
     menuTemplate(true); // change menu navigation for logged in user
-    
+
     const signoutButton = document.getElementById("signoutButton");
     signoutButton.addEventListener("click", () => {
       signout(spa.navigateTo("/"));
       menuTemplate(false);
     });
-    
-    spa.refrech()
+
+    spa.refrech();
 
     spa.navigateTo("/dashboard"); // change view
   });
@@ -58,6 +72,6 @@ const signoutButton = document.getElementById("signoutButton");
 signoutButton?.addEventListener("click", () => {
   signout(spa.navigateTo("/"));
   menuTemplate(false);
-  spa.refrech()
+  spa.refrech();
 });
-spa.refrech()
+spa.refrech();
