@@ -17,13 +17,15 @@
   border-radius: 8px;
 }
 
-.onboarding-buttons button {
-  width: 48%;
+.onboarding-buttons button,
+.onboarding-buttons a {
+  width: 50%;
 }
 
 .onboarding-buttons {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .outer-progress {
