@@ -1,14 +1,15 @@
 // Setting the global variable _currentProduct
-let _currentProduct;
+
 // Listning for custom event page-change from the spa
 //on event it finds the product ID and calls the fetchProduct() function using the id as parameter
 document.addEventListener("page-change", (e) => {
   const productId = e.detail.id;
   const route = e.detail.route.title;
   if (route === "product") {
-    _currentProduct = window.data.find(
+    window._currentProduct = window.data.find(
       (product) => Number(product.id) === productId
     );
+
     fetchProduct(_currentProduct.id);
   }
 });
@@ -19,7 +20,7 @@ document.addEventListener("page-change", (e) => {
 // if the response is .ok it will convert the data and calls the function constructElement using the data as a parameter
 async function fetchProduct(productId) {
   const url =
-    location.origin + "/api?action=getSingleProduct&productId=" + productId;
+    location.origin + "/api/?action=getSingleProduct&productId=" + productId;
   const options = {
     method: "get",
     requestUrl: url,
@@ -31,7 +32,7 @@ async function fetchProduct(productId) {
   const response = await fetch(options.requestUrl, options);
   if (response.ok) {
     const requestData = await response.json();
-    productData = requestData.data;
+    let productData = await requestData.data;
     constructElement(productData[0]);
   } else {
     console.warn("fetch din't complete as intended");
@@ -106,7 +107,9 @@ function constructElement(data) {
         </form>
         `;
   container.innerHTML = htmlString;
+
   document.getElementById("reserveProduct").addEventListener("submit", (e) => {
+    console.log("yo");
     e.preventDefault();
     document.getElementById("popupOverlay").style.display = "block";
   });
@@ -126,7 +129,7 @@ document.getElementById("closePopup").addEventListener("click", (e) => {
 // - sets 'userWeightSaved' in sessionStorage, to be used on the purchasesummary
 // - if the response is .ok it wil direct the user to the purchase summary
 async function sellProduct(productId, userId, productWeight) {
-  const url = location.origin + "/api?action=sellProduct";
+  const url = location.origin + "/api/?action=sellProduct";
   const options = {
     method: "post",
     requestUrl: url,
@@ -141,7 +144,8 @@ async function sellProduct(productId, userId, productWeight) {
     },
   };
   const response = await fetch(options.requestUrl, options);
-  responseData = await response.json();
+  let responseData = await response.json();
+  console.log(responseData);
   sessionStorage.setItem("userWeightSaved", responseData.data[0].vaegtReddet);
   if (response.ok) {
     spa.navigateTo("/purchase-summary");
@@ -158,6 +162,6 @@ document.getElementById("reserveProduct").addEventListener("click", () => {
   const productId = parseInt(_currentProduct.id);
   const productWeight = parseInt(_currentProduct.weightOfGoods);
   const userId = Number(JSON.parse(sessionStorage.getItem("user")).id);
-  console.log("userid: ", userid);
+  console.log("userid: ", userId);
   sellProduct(productId, userId, productWeight);
 });

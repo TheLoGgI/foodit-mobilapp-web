@@ -47,8 +47,7 @@ document
     };
 
     const response = await fetch(url, options);
-    const result = await response.text();
-    if (result) {
+    if (response.ok) {
       spa.navigateTo("/my-products");
     } else {
       alert("Noget gik galt");

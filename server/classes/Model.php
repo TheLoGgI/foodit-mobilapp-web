@@ -61,8 +61,8 @@ protected function getAllMyProducts($userId){
         $dbConnection = $this->connect();
         
         $sql = "SELECT * FROM productDetailView where seller=$userId";
-       
         $result = $dbConnection->query($sql);
+        
 
         if ($result->num_rows !== 0) {
         
@@ -72,6 +72,7 @@ protected function getAllMyProducts($userId){
             }
             return $userDataCollection;
         } 
+        
     }
 
 

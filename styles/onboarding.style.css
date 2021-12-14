@@ -17,6 +17,10 @@
   border-radius: 8px;
 }
 
+.onboarding-text p {
+  margin-bottom: 20px;
+}
+
 .onboarding-buttons button,
 .onboarding-buttons a {
   width: 50%;

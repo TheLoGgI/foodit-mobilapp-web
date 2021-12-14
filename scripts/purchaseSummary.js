@@ -5,6 +5,7 @@
 // - changes the background from the top element to the product image
 function showPurchaseInfo() {
   const container = document.getElementById("purchaseSummary");
+  console.log(window._currentProduct);
   let temp = `
          <div class="purchase-info" id="purchaseInfo">
               <div class="purchase-head" id="purchaseBackground">

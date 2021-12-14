@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../classes/editProduct.php';
+include '../classes/EditProduct.php';
 
 
 
