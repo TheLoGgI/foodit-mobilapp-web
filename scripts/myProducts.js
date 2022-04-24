@@ -1,9 +1,8 @@
-//this function sets a session storage element base on the id its given
 function saveGoodsId(id) {
   const goodToEditId = id;
   sessionStorage.setItem("goodsToEditId", goodToEditId);
+  spa.navigateTo("/edit-product");
 }
-
 //this function grabs the userID from sessionStorage
 //Sets the url and options for the fetch
 // then it uses fetch POST to send the userID to the server
@@ -12,7 +11,8 @@ function saveGoodsId(id) {
 async function fetchMyProducts() {
   const user = JSON.parse(sessionStorage.getItem("user"));
   const userId = user.id;
-  const url = location.origin + "/api?action=getMyProducts";
+  const url = location.origin + "/api/?action=getMyProducts";
+  console.log(userId);
   const options = {
     method: "POST",
     requestUrl: url,
@@ -25,8 +25,7 @@ async function fetchMyProducts() {
   const response = await fetch(options.requestUrl, options);
   if (response.ok) {
     const requestData = await response.json();
-    const data = requestData.data;
-    console.log(data);
+    let data = requestData.data;
     constructMyElements(data);
   } else {
     console.warn("fetch din't complete as intended");
@@ -40,9 +39,7 @@ function constructMyElements(data) {
   let container = document.getElementById("allMyProducts");
 
   for (const product of data) {
-    temp += `<a onclick="saveGoodsId(${
-      product.id
-    })" class="goods-to-edit" href="/edit-product" >
+    temp += `<a onclick="saveGoodsId(${product.id})" class="goods-to-edit"  >
                 <div class="goods">
                     <div class="goods-image">
                         <img class="gd-image" src="${

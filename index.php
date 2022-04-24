@@ -52,5 +52,18 @@ include('server/database/mysql.php');
 
 
     <script src="scripts/main.js" type="module"></script>
+    <script src="scripts/product.js" ></script>
+    <script src="scripts/sellProducts.js" ></script>
+    <script src="scripts/purchaseSummary.js"></script>
+    <script src="scripts/myProducts.js" ></script>
+   <!--<script>
+     //this function sets a session storage element based on the id its given
+    function saveGoodsId(id) {
+        const goodToEditId = id;
+        sessionStorage.setItem("goodsToEditId", goodToEditId);
+        spa.navigateTo("/edit-product");
+    }
+</script>-->
 </body>
 </html>
+

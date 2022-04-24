@@ -38,12 +38,13 @@ if($_GET['action']=="getMyProducts"){
     $jsonData=json_decode($data);
     $userId=intval($jsonData->userId);
 
+$res = array(
+    "statusText" => 'Success', 
+    "status" => 200,
+    "data" => $API->getMyProducts($userId),
+    "userid" => $userId
 
-    $res = array(
-        "statusText" => 'Success', 
-        "status" => 200,
-        "data" => $API->getMyProducts($userId)
-    );
+);
 
 
 }

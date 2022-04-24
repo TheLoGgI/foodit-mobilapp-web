@@ -1,8 +1,3 @@
-import "./product.js";
-import "./sellProducts.js";
-import "./purchaseSummary.js";
-import "./myProducts.js";
-
 import SPA from "./classes/spa.js";
 import menuTemplate from "./menuDynamicTemplate.js";
 import { changeBack, changeForward } from "./onboarding.js";
@@ -75,3 +70,11 @@ signoutButton?.addEventListener("click", () => {
   spa.refrech();
 });
 spa.refrech();
+
+(() => {
+  function saveGoodsId(id) {
+    const goodToEditId = id;
+    sessionStorage.setItem("goodsToEditId", goodToEditId);
+    spa.navigateTo("/edit-product");
+  }
+})();
