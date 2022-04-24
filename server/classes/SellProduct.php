@@ -69,7 +69,7 @@ private function movePicture(){
     if($this->foodPic['size']<2000000&&in_array($this->fileType,$this->validFileTypes)){
         $this->ResizeImage($this->foodPic, 800, $this->fileName, $this->tagetFolder);
     }else{
-        var_dump("Filen var enten for stor eller ikke en tilladt filtype");
+        // Filen var enten for stor eller ikke en tilladt filtype
     }
 }
 

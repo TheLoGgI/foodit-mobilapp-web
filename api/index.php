@@ -31,22 +31,19 @@ $res = array(
     "status" => 200,
     "data" => $API->sellProduct($jsonData->productId,$jsonData->userId,$jsonData->productWeight)
 );
-
-    
-
 }
 
 if($_GET['action']=="getMyProducts"){
     $data=file_get_contents('php://input');
     $jsonData=json_decode($data);
-$userId=intval($jsonData->userId);
+    $userId=intval($jsonData->userId);
 
 
-$res = array(
-    "statusText" => 'Success', 
-    "status" => 200,
-    "data" => $API->getMyProducts($userId)
-);
+    $res = array(
+        "statusText" => 'Success', 
+        "status" => 200,
+        "data" => $API->getMyProducts($userId)
+    );
 
 
 }

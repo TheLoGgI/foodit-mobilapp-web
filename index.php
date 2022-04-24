@@ -1,6 +1,5 @@
 <?php
 include('server/database/mysql.php');
-include('server/database/ses.php');
 
 ?>
 
